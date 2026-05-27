@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Interview Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+            background-color: #f5f0e8;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='700' viewBox='0 0 900 700'%3E%3Cdefs%3E%3Cstyle%3E.sym%7Bfill:none;stroke:%23c8b89a;stroke-width:1.2;opacity:0.55;%7D.sym2%7Bfill:%23c8b89a;opacity:0.18;%7D%3C/style%3E%3C/defs%3E%3Crect class='sym' x='30' y='30' width='70' height='55' rx='5'/%3E%3Crect class='sym' x='44' y='22' width='42' height='14' rx='4'/%3E%3Cline class='sym' x1='30' y1='57' x2='100' y2='57'/%3E%3Cpolygon class='sym' points='820,20 810,35 815,80 825,80 830,35'/%3E%3Crect class='sym' x='808' y='20' width='24' height='14' rx='3'/%3E%3Crect class='sym' x='18' y='180' width='90' height='55' rx='8'/%3E%3Cpolygon class='sym2' points='38,235 28,255 55,235'/%3E%3Ccircle class='sym' cx='435' cy='480' r='22'/%3E%3Cline class='sym' x1='435' y1='502' x2='435' y2='514'/%3E%3Crect class='sym' x='424' y='514' width='22' height='6' rx='2'/%3E%3Ccircle class='sym' cx='830' cy='480' r='30'/%3E%3Cpolyline class='sym' points='815,480 825,492 848,465'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .banner { width: 100%; border-radius: 0 0 12px 12px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .banner img { width: 100%; height: 220px; object-fit: cover; object-position: center 30%; display: block; }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 4px; font-size: 1.8rem; }
+        .presenter { text-align: center; font-size: 0.95rem; color: #777; margin-bottom: 20px; font-style: italic; }
+        .tabs { display: flex; cursor: pointer; margin-bottom: 20px; border-bottom: 2px solid #ddd; flex-wrap: wrap; }
+        .tab { padding: 10px 18px; background: #ede8df; border: 1px solid #ddd; border-bottom: none; margin-right: 5px; border-radius: 5px 5px 0 0; font-weight: bold; font-size: 0.9rem; }
+        .tab.active { background: #fdfaf5; border-bottom: 2px solid #fff; margin-bottom: -2px; color: #e67e22; }
+        .tab-content { display: none; background: #fdfaf5; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .tab-content.active { display: block; }
+        .section-heading { font-size: 1rem; font-weight: bold; color: #e67e22; background: #fdf5ec; border-left: 4px solid #e67e22; padding: 6px 12px; margin: 20px 0 10px; border-radius: 0 4px 4px 0; }
+        .tab-content .section-heading:first-child { margin-top: 4px; }
+        .item { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #eee; display: flex; align-items: flex-start; gap: 15px; }
+        .item.new-question { background: #e8f0fe; border-radius: 6px; padding: 10px 12px 10px; border-bottom: 1px solid #b8cdf8; margin-bottom: 12px; }
+        .item.new-question .en { color: #1a56b0; }
+        .text-container { flex: 1; }
+        .en { font-size: 1.05rem; font-weight: bold; color: #2c3e50; display: block; margin-bottom: 4px; }
+        .bracket { color: #e67e22; font-style: italic; }
+        .zh { font-size: 0.9rem; color: #666; display: block; }
+        .play-btn { background: #e67e22; color: white; border: none; padding: 8px 12px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; width: 40px; height: 40px; flex-shrink: 0; }
+        .play-btn:hover { background: #d35400; }
+        .play-btn:active { transform: scale(0.95); }
+
+        /* ── Tab 3 Practice Worksheet ── */
+        .worksheet { font-family: 'Segoe UI', sans-serif; }
+        .ws-intro { background: #fdf5ec; border: 1px solid #e5c98e; border-radius: 8px; padding: 14px 18px; margin-bottom: 22px; font-size: 0.95rem; color: #5a4000; }
+        .ws-category { margin-bottom: 28px; }
+        .ws-cat-title { font-size: 1.05rem; font-weight: bold; color: #fff; background: #e67e22; padding: 7px 14px; border-radius: 5px; margin-bottom: 14px; }
+        .ws-question { margin-bottom: 20px; }
+        .ws-q-label { font-weight: bold; color: #2c3e50; margin-bottom: 6px; font-size: 0.97rem; }
+        .ws-prompt { font-size: 0.88rem; color: #888; margin-bottom: 5px; font-style: italic; }
+        .ws-field { width: 100%; border: 1.5px solid #c8b89a; border-radius: 6px; padding: 9px 12px; font-size: 0.95rem; font-family: inherit; background: #fffdf8; resize: vertical; min-height: 68px; color: #333; transition: border-color 0.2s; }
+        .ws-field:focus { outline: none; border-color: #e67e22; background: #fff; }
+        .ws-field-inline { width: 100%; border: 1.5px solid #c8b89a; border-radius: 6px; padding: 7px 12px; font-size: 0.95rem; font-family: inherit; background: #fffdf8; color: #333; transition: border-color 0.2s; }
+        .ws-field-inline:focus { outline: none; border-color: #e67e22; background: #fff; }
+        .ws-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+        .ws-row label { font-size: 0.88rem; color: #555; font-weight: 600; white-space: nowrap; padding-top: 9px; min-width: 90px; }
+        .ws-row .ws-field-inline { flex: 1; min-width: 160px; }
+        .print-bar { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+        .print-btn { background: #2c7be5; color: #fff; border: none; padding: 10px 26px; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.2s; }
+        .print-btn:hover { background: #1a5cbf; }
+        @media print {
+            body { background: #fff !important; background-image: none !important; padding: 0 !important; }
+            .banner, .tabs, .print-bar, #tab1, #tab2, .play-btn { display: none !important; }
+            #tab3 { display: block !important; box-shadow: none !important; padding: 0 !important; }
+            .ws-field, .ws-field-inline { border: 1px solid #aaa !important; background: #fff !important; }
+            .print-btn { display: none !important; }
+            h1, .presenter { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <img src="banner.png" alt="Job Interview Banner" style="width:100%;height:220px;display:block;">
+    </div>
+
+    <h1>Job Interview Learning Guide</h1>
+
+    <div class="tabs">
+        <div class="tab active" onclick="openTab(event, 'tab1')">1. Self-Introduction</div>
+        <div class="tab" onclick="openTab(event, 'tab2')">2. Common Questions</div>
+        <div class="tab" onclick="openTab(event, 'tab3')">3. Practice Worksheet [Clinic materials]</div>
+    </div>
+
+    <!-- ═══════════════ TAB 1 ═══════════════ -->
+    <div id="tab1" class="tab-content active">
+        <div class="section-heading">Greeting</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_0.mp3')">▶</button><div class="text-container"><span class="en">Good morning. Thank you for having me here today.</span><span class="zh">早上好。谢谢今天邀请我来这里。</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_1.mp3')">▶</button><div class="text-container"><span class="en">My name is <span class="bracket">[Sharon]</span>, and I'm a Higher Diploma student in <span class="bracket">[Landscape Architecture]</span> at <span class="bracket">[HKDI]</span>.</span><span class="zh">我叫 Sharon，是香港知专设计学院园境建筑专业的高级文凭学生。</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_2.mp3')">▶</button><div class="text-container"><span class="en">I'm excited to be here to discuss my passion for <span class="bracket">[sustainable design]</span> and how I can contribute to your team.</span><span class="zh">我很高兴来到这里讨论我对可持续设计的热情，以及我如何为您的团队做出贡献。</span></div></div>
+
+        <div class="section-heading">Relevant Education / Knowledge / Skills</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_3.mp3')">▶</button><div class="text-container"><span class="en">During my Higher Diploma studies, I excelled in courses that covered <span class="bracket">[site analysis]</span> and <span class="bracket">[urban planning]</span>, which equipped me with essential knowledge to tackle real-world challenges.</span><span class="zh">在我的高级文凭学习期间，我在涉及场地分析和城市规划的课程中表现出色，这使我具备了应对现实挑战的基本知识。</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_4.mp3')">▶</button><div class="text-container"><span class="en">I believe my academic background has prepared me well for this role.</span><span class="zh">我相信我的学术背景已经为我胜任这个职位做好了充分的准备。</span></div></div>
+
+        <div class="section-heading">Relevant Work Experience</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_5.mp3')">▶</button><div class="text-container"><span class="en">I worked at <span class="bracket">[ABC Design Firm]</span> last summer as an intern, where I had the opportunity to assist in <span class="bracket">[landscape mapping]</span>.</span><span class="zh">去年夏天，我在 ABC 设计事务所担任实习生，在那里我有机会协助景观绘图。</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playInlineAudio('intro_work2')">▶</button><div class="text-container"><span class="en">This experience allowed me to apply my knowledge in a practical setting and enhanced my skills in communication / collaboration / problem-solving / <span class="bracket">[any other competencies]</span>.</span><span class="zh">这次经历让我能够在实际环境中运用所学知识，并提升了我在沟通、协作和解决问题方面的能力。</span></div></div>
+
+        <div class="section-heading">Relevant Hobbies / Extracurricular Activities</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_6.mp3')">▶</button><div class="text-container"><span class="en">In my leisure time, I enjoy <span class="bracket">[sketching nature]</span>, which helps me stay inspired and informed about the latest trends.</span><span class="zh">在闲暇时间，我喜欢写生，这有助于我保持灵感并了解最新趋势。</span></div></div>
+
+        <div class="section-heading">Closing</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_7.mp3')">▶</button><div class="text-container"><span class="en">Thank you for considering my application.</span><span class="zh">感谢您考虑我的申请。</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('intro_8.mp3')">▶</button><div class="text-container"><span class="en">I look forward to the possibility of working together and contributing to your team.</span><span class="zh">我期待着合作并为您的团队做出贡献的可能性。</span></div></div>
+        <p class="presenter">In Acknowledgement of Sharon To &nbsp;|&nbsp; Presented by Rebecca Tang</p>
+    </div>
+
+    <!-- ═══════════════ TAB 2 ═══════════════ -->
+    <div id="tab2" class="tab-content">
+
+        <div class="section-heading">Category 1 – Self-Introduction</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_7.mp3')">▶</button><div class="text-container"><span class="en">What do you do in your spare time?</span><span class="zh">你业余时间都做些什么？</span></div></div>
+        <!-- NEW from PDF Cat 1 -->
+        <div class="item new-question"><button class="play-btn" onclick="speak('I see you have done some voluntary work. What did you learn from that?')">▶</button><div class="text-container"><span class="en">I see you have done some voluntary work. What did you learn from that?</span><span class="zh">我看到你做过一些义工。你从中学到了什么？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('What three keywords would your peers use to describe you?')">▶</button><div class="text-container"><span class="en">What three keywords would your peers use to describe you?</span><span class="zh">你的同学/同事会用哪三个关键词来形容你？</span></div></div>
+
+        <div class="section-heading">Category 2 – Strengths &amp; Weaknesses</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_5.mp3')">▶</button><div class="text-container"><span class="en">What are your strengths / weaknesses?</span><span class="zh">你的优缺点是什么？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_6.mp3')">▶</button><div class="text-container"><span class="en">What three words would you use to describe yourself?</span><span class="zh">你会用哪三个词来形容自己？</span></div></div>
+        <!-- NEW from PDF Cat 2 -->
+        <div class="item new-question"><button class="play-btn" onclick="speak('Can you describe a time when your strengths helped you succeed?')">▶</button><div class="text-container"><span class="en">Can you describe a time when your strengths helped you succeed?</span><span class="zh">你能描述一次你的优势帮助你取得成功的经历吗？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('What is a weakness you have identified in yourself, and how are you addressing it?')">▶</button><div class="text-container"><span class="en">What is a weakness you've identified in yourself, and how are you addressing it?</span><span class="zh">你认识到自己的哪些不足，你是如何改进的？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('What are the important qualities a person should have to become an effective team member?')">▶</button><div class="text-container"><span class="en">What are the important qualities a person should have to become an effective team member?</span><span class="zh">一个人需要具备哪些重要素质才能成为有效的团队成员？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('How do you ensure your weaknesses do not impact your work performance?')">▶</button><div class="text-container"><span class="en">How do you ensure your weaknesses do not impact your work performance?</span><span class="zh">你如何确保自己的不足不会影响工作表现？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('In what areas do you feel you need the most improvement?')">▶</button><div class="text-container"><span class="en">In what areas do you feel you need the most improvement?</span><span class="zh">你觉得自己在哪些方面最需要改进？</span></div></div>
+
+        <div class="section-heading">Category 3 – Career Goals</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_0.mp3')">▶</button><div class="text-container"><span class="en">What are your goals for the next 5 / 10 years? How do you plan to achieve those goals?</span><span class="zh">你未来 5/10 年的目标是什么？你打算如何实现这些目标？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_1.mp3')">▶</button><div class="text-container"><span class="en">What are your long-term career goals?</span><span class="zh">你的长期职业目标是什么？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_2.mp3')">▶</button><div class="text-container"><span class="en">What is your personal growth and development plan?</span><span class="zh">你的个人成长和发展计划是什么？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_3.mp3')">▶</button><div class="text-container"><span class="en">Would you consider taking any training courses related to this field / job?</span><span class="zh">你会考虑参加与该领域/工作相关的培训课程吗？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_4.mp3')">▶</button><div class="text-container"><span class="en">What would you like to study in the near future?</span><span class="zh">近期你想学习什么？</span></div></div>
+
+        <div class="section-heading">Technical / Knowledge-Based Questions</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_8.mp3')">▶</button><div class="text-container"><span class="en">How are your studies at IVE related to this job?</span><span class="zh">你在 IVE 的学习与这份工作有什么关系？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_9.mp3')">▶</button><div class="text-container"><span class="en">What have you learnt at IVE to prepare you for this job?</span><span class="zh">你在 IVE 学到了什么来为这份工作做准备？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_10.mp3')">▶</button><div class="text-container"><span class="en">What is your favourite subject at IVE? What have you learnt from it?</span><span class="zh">你在 IVE 最喜欢的科目是什么？你从中学到了什么？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_11.mp3')">▶</button><div class="text-container"><span class="en">What skills / knowledge have you acquired from your full-time / part-time work?</span><span class="zh">你从全职/兼职工作中获得了哪些技能/知识？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_12.mp3')">▶</button><div class="text-container"><span class="en">What have you gained from your summer work / part-time work / voluntary work?</span><span class="zh">你从暑期工作/兼职工作/志愿工作中收获了什么？</span></div></div>
+
+        <div class="section-heading">Category 4 – Problem-Solving / Situational Questions</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_13.mp3')">▶</button><div class="text-container"><span class="en">Describe a difficult work situation / project and explain how you overcame it.</span><span class="zh">描述一个困难的工作情况/项目，并解释你是如何克服它的。</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_14.mp3')">▶</button><div class="text-container"><span class="en">How would you deal with difficult customers / patients / colleagues?</span><span class="zh">你会如何处理难缠的客户/患者/同事？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_15.mp3')">▶</button><div class="text-container"><span class="en">How would you manage multiple tasks?</span><span class="zh">你会如何管理多项任务？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_16.mp3')">▶</button><div class="text-container"><span class="en">Can you tell us about a situation in which you were required to solve a complicated problem?</span><span class="zh">你能告诉我们你被要求解决一个复杂问题的情况吗？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_17.mp3')">▶</button><div class="text-container"><span class="en">Describe a time when you worked well under pressure. How did you handle the situation?</span><span class="zh">描述一次你在压力下表现良好的经历。你是如何处理这种情况的？</span></div></div>
+        <!-- NEW from PDF Cat 4 -->
+        <div class="item new-question"><button class="play-btn" onclick="speak('How do you handle office gossip?')">▶</button><div class="text-container"><span class="en">How do you handle office gossip?</span><span class="zh">你如何处理办公室流言蜚语？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('How do you deal with conflicts with peers?')">▶</button><div class="text-container"><span class="en">How do you deal with conflicts with peers?</span><span class="zh">你如何处理与同事之间的冲突？</span></div></div>
+
+        <div class="section-heading">Category 5 – Soft Skills &amp; Work Experience</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_18.mp3')">▶</button><div class="text-container"><span class="en">Can you provide us with an example of your ability to work independently?</span><span class="zh">你能给我们提供一个你独立工作能力的例子吗？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_19.mp3')">▶</button><div class="text-container"><span class="en">Do you work better as a team member or alone? Give an example.</span><span class="zh">你作为一个团队成员还是独自工作表现更好？举个例子。</span></div></div>
+        <!-- NEW from PDF Cat 5 -->
+        <div class="item new-question"><button class="play-btn" onclick="speak('How do you handle stress and pressure?')">▶</button><div class="text-container"><span class="en">How do you handle stress and pressure?</span><span class="zh">你如何应对压力？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('Do you mind traveling frequently to Mainland China?')">▶</button><div class="text-container"><span class="en">Do you mind traveling frequently to Mainland China?</span><span class="zh">你介意经常前往中国内地出差吗？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('Are you willing to work under pressure and overtime?')">▶</button><div class="text-container"><span class="en">Are you willing to work under pressure and overtime?</span><span class="zh">你愿意在压力下工作和加班吗？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('Do you have any full-time or part-time work experience?')">▶</button><div class="text-container"><span class="en">Do you have any full-time / part-time work experience?</span><span class="zh">你有全职/兼职工作经验吗？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('What have you gained from your summer work or part-time work?')">▶</button><div class="text-container"><span class="en">What have you gained from your summer work / part-time work?</span><span class="zh">你从暑期工作/兼职工作中收获了什么？</span></div></div>
+        <div class="item new-question"><button class="play-btn" onclick="speak('What do you know about the type of work we expect from you?')">▶</button><div class="text-container"><span class="en">What do you know about the type of work we expect from you?</span><span class="zh">你对我们期望你完成的工作类型了解多少？</span></div></div>
+
+        <div class="section-heading">Other Popular Questions</div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_20.mp3')">▶</button><div class="text-container"><span class="en">What do you know about our company?</span><span class="zh">你对我们公司了解多少？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_21.mp3')">▶</button><div class="text-container"><span class="en">What interests you about this job?</span><span class="zh">你对这份工作感兴趣的地方是什么？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_22.mp3')">▶</button><div class="text-container"><span class="en">Why do you want this job?</span><span class="zh">你为什么想要这份工作？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_23.mp3')">▶</button><div class="text-container"><span class="en">Since you are quite fresh compared to other candidates, what makes you think you are qualified for the post?</span><span class="zh">与其他候选人相比，你还很年轻/没有经验，为什么你认为自己能胜任这个职位？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_24.mp3')">▶</button><div class="text-container"><span class="en">What makes you think you are a suitable candidate for the post?</span><span class="zh">为什么你认为自己是这个职位的合适人选？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_25.mp3')">▶</button><div class="text-container"><span class="en">What can you contribute to our company?</span><span class="zh">你能为我们公司做出什么贡献？</span></div></div>
+        <div class="item"><button class="play-btn" onclick="playAudio('q_26.mp3')">▶</button><div class="text-container"><span class="en">Why should we hire you?</span><span class="zh">我们为什么要聘用你？</span></div></div>
+
+        <p style="font-size:0.82rem;color:#aaa;margin-top:18px;">🔵 Questions highlighted in blue are newly added from the clinic session materials.</p>
+        <p class="presenter">Presented by Rebecca Tang</p>
+    </div>
+
+    <!-- ═══════════════ TAB 3 ═══════════════ -->
+    <div id="tab3" class="tab-content">
+        <div class="worksheet">
+            <div class="print-bar">
+                <button class="print-btn" onclick="printWorksheet()">🖨 Print / Download PDF</button>
+            </div>
+
+            <div class="ws-intro">
+                <strong>📝 Practice Worksheet</strong> – Fill in your personalised answers below, then click <em>Print / Download PDF</em> to save a copy. Use this as a rehearsal script before your interview!
+            </div>
+
+            <!-- ── Category 1: Self-Introduction ── -->
+            <div class="ws-category">
+                <div class="ws-cat-title">Category 1 – Self-Introduction</div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">1. Can you give a brief introduction of yourself?</div>
+                    <div class="ws-prompt">Fill in: your name, nickname, diploma subject, company name &amp; job position for part-time work, skills gained, and a strength adjective.</div>
+
+                    <div class="ws-row"><label>Full Name</label><input class="ws-field-inline" type="text" placeholder="e.g. Chan Siu Ming"></div>
+                    <div class="ws-row"><label>Nickname</label><input class="ws-field-inline" type="text" placeholder="e.g. Sam"></div>
+                    <div class="ws-row"><label>HD Subject</label><input class="ws-field-inline" type="text" placeholder="e.g. Landscape Architecture"></div>
+                    <div class="ws-row"><label>Company</label><input class="ws-field-inline" type="text" placeholder="e.g. ABC Design Firm"></div>
+                    <div class="ws-row"><label>Job Position</label><input class="ws-field-inline" type="text" placeholder="e.g. part-time salesperson"></div>
+                    <div class="ws-row"><label>Duties</label><input class="ws-field-inline" type="text" placeholder="e.g. served customers, handled cash register"></div>
+                    <div class="ws-row"><label>Skills Gained</label><input class="ws-field-inline" type="text" placeholder="e.g. communication, time management"></div>
+                    <div class="ws-row"><label>Strength</label><input class="ws-field-inline" type="text" placeholder="e.g. responsible, hardworking, creative"></div>
+
+                    <div class="ws-prompt" style="margin-top:10px;">Your full introduction:</div>
+                    <textarea class="ws-field" rows="6" placeholder="Hi, my name is ___, you can call me ___. I graduated from IVE with a Higher Diploma in ___ this summer. I have worked at ___ as a part-time ___, where I had to ___. I have gained better ___ skills. I am ___. I am confident that I will be a suitable person for this job."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">2. What do you do in your spare time?</div>
+                    <div class="ws-prompt">Choose an activity that shows relevance to the job opening.</div>
+                    <textarea class="ws-field" rows="3" placeholder="In my spare time, I like to ___ to relax. I often explore new ___ that could enhance my skills."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">3. I see you have done some voluntary work. What did you learn from that?</div>
+                    <textarea class="ws-field" rows="3" placeholder="At my volunteering, I learnt to ___ (e.g. work with others / communicate with team members / manage time when doing projects)."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">4. What three keywords would your peers use to describe you?</div>
+                    <textarea class="ws-field" rows="4" placeholder="They would say I am ___ because I ___. They would say I am ___ because I ___. They would say I have ___ because I ___."></textarea>
+                </div>
+            </div>
+
+            <!-- ── Category 2: Strengths & Weaknesses ── -->
+            <div class="ws-category">
+                <div class="ws-cat-title">Category 2 – Strengths &amp; Weaknesses</div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">1. Can you describe a time when your strengths helped you succeed?</div>
+                    <textarea class="ws-field" rows="5" placeholder="There's a time when my ___ helped me succeed in ___. I was responsible for ___. By ___, the result was ___, and we received positive feedback."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">2. What is a weakness you've identified in yourself, and how are you addressing it?</div>
+                    <textarea class="ws-field" rows="4" placeholder="Sometimes I might find it challenging to ___. I'm working on improving my ___. I have started ___. This has helped me ___."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">3. What are the important qualities a person should have to become an effective team member?</div>
+                    <textarea class="ws-field" rows="5" placeholder="To be an effective team member, a person should have ___. This helps ___. They should also be ___, so ___. Finally, being ___ is important, as it helps ___."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">4. How do you ensure your weaknesses do not impact your work performance?</div>
+                    <textarea class="ws-field" rows="4" placeholder="I regularly review my tasks to identify any weaknesses. For example, if I struggle with ___, I ___. I also ask for feedback to improve. By being aware and taking action, I make sure my weaknesses do not affect my performance."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">5. In what areas do you feel you need the most improvement?</div>
+                    <textarea class="ws-field" rows="4" placeholder="I feel I need the most improvement in ___. Sometimes I find it hard to ___. To work on this, I ___. This way, I hope to ___."></textarea>
+                </div>
+            </div>
+
+            <!-- ── Category 3: Long / Short-term Goals ── -->
+            <div class="ws-category">
+                <div class="ws-cat-title">Category 3 – Long / Short-term Goals</div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">1. What is your plan for your personal growth and development?</div>
+                    <textarea class="ws-field" rows="4" placeholder="My plan includes ___. I aim to take online courses related to ___, seek feedback from colleagues, and attend relevant workshops. I believe continuous learning will help me grow personally and professionally."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">2. What are your long-term career goals?</div>
+                    <textarea class="ws-field" rows="4" placeholder="My long-term goal would be to advance in my career to take on leadership roles, continuously improve my skills, and make a positive impact in ___."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">3. What are your goals for the next 5 / 10 years?</div>
+                    <div class="ws-prompt">5-Year Goal</div>
+                    <textarea class="ws-field" rows="3" placeholder="In the next five years, I aim to deepen my expertise in ___ and take on more responsibilities, possibly in a leadership position."></textarea>
+                    <div class="ws-prompt" style="margin-top:8px;">10-Year Goal</div>
+                    <textarea class="ws-field" rows="3" placeholder="In ten years, I hope to be in a senior role where I can influence strategy and mentor others."></textarea>
+                    <div class="ws-prompt" style="margin-top:8px;">Plan to Achieve Goals</div>
+                    <textarea class="ws-field" rows="3" placeholder="To achieve these goals, I plan to pursue relevant certifications, seek mentorship, and focus on building a strong professional network."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">4. What would you like to study in the near future?</div>
+                    <textarea class="ws-field" rows="3" placeholder="In the near future, I would like to study ___. I believe this knowledge will enhance my abilities and help me contribute more effectively to my team and the company."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">5. Will you consider taking any training courses related to this field / job?</div>
+                    <textarea class="ws-field" rows="3" placeholder="Positive. I am definitely open to taking relevant training. I believe that ongoing education is important for keeping up with industry trends and upgrading my skills."></textarea>
+                </div>
+            </div>
+
+            <!-- ── Category 4: Problem-Solving ── -->
+            <div class="ws-category">
+                <div class="ws-cat-title">Category 4 – Problem-Solving</div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">1. How do you deal with difficult customers / irresponsible colleagues?</div>
+                    <textarea class="ws-field" rows="5" placeholder="When dealing with difficult customers, I stay calm and listen to their concerns. I would also try to understand their point of view and find a solution together.&#10;For irresponsible colleagues, I communicate openly with them about the issues and suggest ways to improve our teamwork, focusing on positive outcomes."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">2. How do you manage multiple tasks?</div>
+                    <textarea class="ws-field" rows="4" placeholder="To manage multiple tasks, I prioritise them based on deadlines and importance. I use ___ to stay organised and focused. I also ___, which makes it easier to complete them."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">3. How do you handle office gossip?</div>
+                    <textarea class="ws-field" rows="4" placeholder="When I hear office gossip, I try to avoid participating in it. Instead, I focus on my work and encourage others to do the same. If the gossip affects my team, I may talk to a manager to address the issue professionally."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">4. Describe a difficult work situation / project and how you overcame it.</div>
+                    <textarea class="ws-field" rows="5" placeholder="In a previous project, we faced ___. I organised a meeting to discuss the challenges with my team. We divided the work into smaller tasks and supported each other. By staying focused and working together, we completed the project on time and met our goals."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">5. Can you tell us about a situation where you analysed and solved a complicated problem?</div>
+                    <textarea class="ws-field" rows="5" placeholder="Once, I had to analyse ___. I collected data and identified that ___. Then I proposed ___. After implementing it, ___, showing the importance of good analysis."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">6. How do you deal with conflicts with peers?</div>
+                    <textarea class="ws-field" rows="4" placeholder="When I have a conflict with a peer, I would first try to understand their perspective. I then approach them calmly and discuss the issue openly. If needed, I would involve a manager to help us resolve the conflict professionally."></textarea>
+                </div>
+            </div>
+
+            <!-- ── Category 5: Soft Skills ── -->
+            <div class="ws-category">
+                <div class="ws-cat-title">Category 5 – Soft Skills &amp; Work Experience</div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">1. Do you work better as a team member or alone? Why?</div>
+                    <textarea class="ws-field" rows="3" placeholder="I prefer to work ___ because I ___. But I don't mind working ___ as well."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">2. Can you provide an example of your ability to work independently?</div>
+                    <textarea class="ws-field" rows="4" placeholder="When I was ___, I had to ___. At the end, I was able to finish before the deadline."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">3. How do you handle stress and pressure?</div>
+                    <textarea class="ws-field" rows="3" placeholder="I like to ___, as it helps me relax and recharge."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">4. Do you mind traveling frequently to Mainland China?</div>
+                    <textarea class="ws-field" rows="3" placeholder="No, I don't mind at all. I am happy to be able to see how things work in China as well."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">5. Are you willing to work under pressure and overtime?</div>
+                    <textarea class="ws-field" rows="3" placeholder="Yes, I don't mind working overtime to ___ (e.g. get things done / meet project deadlines)."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">6. Do you have any full-time / part-time work experience?</div>
+                    <textarea class="ws-field" rows="4" placeholder="Yes, I have been working at ___ as a/an ___, where I was responsible for ___."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">7. What have you gained from your summer work / part-time work?</div>
+                    <textarea class="ws-field" rows="3" placeholder="I am able to ___ better when I worked as a ___ at ___."></textarea>
+                </div>
+
+                <div class="ws-question">
+                    <div class="ws-q-label">8. What do you know about the type of work we expect from you?</div>
+                    <textarea class="ws-field" rows="4" placeholder="Since it is an entry level position, I would expect to ___ (e.g. help colleagues with anything they need assistance with, learn the internal processes, and contribute to projects)."></textarea>
+                </div>
+            </div>
+
+            <div class="print-bar" style="margin-top:10px;">
+                <button class="print-btn" onclick="printWorksheet()">🖨 Print / Download PDF</button>
+            </div>
+        </div>
+        <p class="presenter">Presented by Rebecca Tang</p>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        const speechTexts = {
+            "intro_0": "Good morning. Thank you for having me here today.",
+            "intro_1": "My name is Sharon, and I'm a Higher Diploma student in Landscape Architecture at HKDI.",
+            "intro_2": "I'm excited to be here to discuss my passion for sustainable design and how I can contribute to your team.",
+            "intro_3": "During my Higher Diploma studies, I excelled in courses that covered site analysis and urban planning, which equipped me with essential knowledge to tackle real-world challenges.",
+            "intro_4": "I believe my academic background has prepared me well for this role.",
+            "intro_5": "I worked at ABC Design Firm last summer as an intern, where I had the opportunity to assist in landscape mapping.",
+            "intro_work2": "This experience allowed me to apply my knowledge in a practical setting and enhanced my skills in communication, collaboration, and problem-solving.",
+            "intro_6": "In my leisure time, I enjoy sketching nature, which helps me stay inspired and informed about the latest trends.",
+            "intro_7": "Thank you for considering my application.",
+            "intro_8": "I look forward to the possibility of working together and contributing to your team.",
+            "q_0": "What are your goals for the next five or ten years? How do you plan to achieve those goals?",
+            "q_1": "What are your long-term career goals?",
+            "q_2": "What is your personal growth and development plan?",
+            "q_3": "Would you consider taking any training courses related to this field or job?",
+            "q_4": "What would you like to study in the near future?",
+            "q_5": "What are your strengths and weaknesses?",
+            "q_6": "What three words would you use to describe yourself?",
+            "q_7": "What do you do in your spare time?",
+            "q_8": "How are your studies at IVE related to this job?",
+            "q_9": "What have you learnt at IVE to prepare you for this job?",
+            "q_10": "What is your favourite subject at IVE? What have you learnt from it?",
+            "q_11": "What skills or knowledge have you acquired from your full-time or part-time work?",
+            "q_12": "What have you gained from your summer work, part-time work, or voluntary work?",
+            "q_13": "Describe a difficult work situation or project and explain how you overcame it.",
+            "q_14": "How would you deal with difficult customers, patients, or colleagues?",
+            "q_15": "How would you manage multiple tasks?",
+            "q_16": "Can you tell us about a situation in which you were required to solve a complicated problem?",
+            "q_17": "Describe a time when you worked well under pressure. How did you handle the situation?",
+            "q_18": "Can you provide us with an example of your ability to work independently?",
+            "q_19": "Do you work better as a team member or alone? Give an example.",
+            "q_20": "What do you know about our company?",
+            "q_21": "What interests you about this job?",
+            "q_22": "Why do you want this job?",
+            "q_23": "Since you are quite fresh compared to other candidates, what makes you think you are qualified for the post?",
+            "q_24": "What makes you think you are a suitable candidate for the post?",
+            "q_25": "What can you contribute to our company?",
+            "q_26": "Why should we hire you?"
+        };
+
+        let selectedVoice = null;
+
+        function loadVoice() {
+            if (selectedVoice) return;
+            const voices = window.speechSynthesis.getVoices();
+            const preferred = ['Samantha','Karen','Moira','Tessa','Victoria','Zoe','Google US English','Microsoft Zira Online (Natural) - English (United States)','Microsoft Zira','Microsoft Jenny Online (Natural) - English (United States)','Microsoft Jenny'];
+            for (const name of preferred) {
+                const v = voices.find(v => v.name === name);
+                if (v) { selectedVoice = v; break; }
+            }
+            if (!selectedVoice) {
+                selectedVoice = voices.find(v => v.lang.startsWith('en') && /female|woman|zira|samantha|karen/i.test(v.name))
+                    || voices.find(v => v.lang === 'en-US')
+                    || voices.find(v => v.lang.startsWith('en'))
+                    || voices[0];
+            }
+        }
+
+        window.speechSynthesis.onvoiceschanged = loadVoice;
+        loadVoice();
+
+        function speak(text) {
+            if (!text) return;
+            window.speechSynthesis.cancel();
+            loadVoice();
+            const utter = new SpeechSynthesisUtterance(text);
+            if (selectedVoice) utter.voice = selectedVoice;
+            utter.lang = 'en-US';
+            utter.pitch = 1.3;
+            utter.rate = 0.8;
+            utter.volume = 1;
+            window.speechSynthesis.speak(utter);
+        }
+
+        function playAudio(filename) {
+            speak(speechTexts[filename.replace('.mp3', '')]);
+        }
+
+        function playInlineAudio(key) {
+            speak(speechTexts[key]);
+        }
+
+        function printWorksheet() {
+            // Switch to Tab 3 first if not already there
+            const tab3 = document.getElementById('tab3');
+            const wasActive = tab3.classList.contains('active');
+            if (!wasActive) {
+                document.querySelectorAll('.tab-content').forEach(t => { t.style.display='none'; t.classList.remove('active'); });
+                tab3.style.display = 'block';
+                tab3.classList.add('active');
+            }
+            window.print();
+            // Restore if needed
+            if (!wasActive) {
+                tab3.style.display = 'none';
+                tab3.classList.remove('active');
+                const tab1 = document.getElementById('tab1');
+                tab1.style.display = 'block';
+                tab1.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
