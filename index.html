@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAN3107 EAII Useful Expressions</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Nunito",sans-serif;background-color:#ddeeff;min-height:100vh;overflow-x:hidden;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Ccircle cx='20' cy='12' r='7' fill='%2390b8d8' opacity='.4'/%3E%3Crect x='13' y='20' width='14' height='13' rx='5' fill='%2390b8d8' opacity='.35'/%3E%3Cellipse cx='10' cy='25' rx='4' ry='3' fill='%2390b8d8' opacity='.3'/%3E%3Cellipse cx='30' cy='25' rx='4' ry='3' fill='%2390b8d8' opacity='.3'/%3E%3Crect x='32' y='8' width='16' height='10' rx='4' fill='%2378a8cc' opacity='.35'/%3E%3Cpolygon points='34,18 30,23 40,18' fill='%2378a8cc' opacity='.35'/%3E%3Ccircle cx='37' cy='12' r='1.3' fill='%2360a0c0' opacity='.45'/%3E%3Ccircle cx='41' cy='12' r='1.3' fill='%2360a0c0' opacity='.45'/%3E%3Ccircle cx='45' cy='12' r='1.3' fill='%2360a0c0' opacity='.45'/%3E%3Ccircle cx='68' cy='52' r='7' fill='%23a0c8e8' opacity='.4'/%3E%3Crect x='61' y='60' width='14' height='13' rx='5' fill='%23a0c8e8' opacity='.35'/%3E%3Cellipse cx='58' cy='65' rx='4' ry='3' fill='%23a0c8e8' opacity='.3'/%3E%3Cellipse cx='78' cy='65' rx='4' ry='3' fill='%23a0c8e8' opacity='.3'/%3E%3Crect x='42' y='50' width='16' height='10' rx='4' fill='%2378a8cc' opacity='.35'/%3E%3Cpolygon points='55,60 51,65 59,60' fill='%2378a8cc' opacity='.35'/%3E%3Ccircle cx='46' cy='55' r='1.3' fill='%2360a0c0' opacity='.45'/%3E%3Ccircle cx='50' cy='55' r='1.3' fill='%2360a0c0' opacity='.45'/%3E%3Ccircle cx='54' cy='55' r='1.3' fill='%2360a0c0' opacity='.45'/%3E%3Ccircle cx='20' cy='60' r='6' fill='%2390b8d8' opacity='.35'/%3E%3Crect x='14' y='67' width='12' height='11' rx='4' fill='%2390b8d8' opacity='.3'/%3E%3Ccircle cx='20' cy='56' r='3' fill='%2390b8d8' opacity='.25'/%3E%3Ccircle cx='20' cy='50' r='2' fill='%2390b8d8' opacity='.18'/%3E%3Ccircle cx='70' cy='14' r='5' fill='%2378a8cc' opacity='.35'/%3E%3Crect x='65' y='20' width='10' height='10' rx='4' fill='%2378a8cc' opacity='.3'/%3E%3Crect x='52' y='12' width='11' height='8' rx='3' fill='%23a0c8e8' opacity='.32'/%3E%3Cpolygon points='58,20 54,24 62,20' fill='%23a0c8e8' opacity='.32'/%3E%3C/svg%3E");background-repeat:repeat}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 60px}
+
+/* HEADER */
+.header{background:#0a1f44;border-radius:0 0 36px 36px;border-bottom:4px solid #061230;padding:20px 24px 16px;margin-bottom:28px;position:relative;overflow:hidden}
+.header::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='%23ffffff' opacity='.07'/%3E%3C/svg%3E");background-repeat:repeat;pointer-events:none}
+.header-inner{display:flex;align-items:center;gap:20px;position:relative;z-index:1}
+.header-illo{flex-shrink:0;width:180px}
+.header-text h1{font-family:"Baloo 2",cursive;font-size:clamp(17px,3.5vw,25px);font-weight:800;color:#fff;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.header-text p{font-size:13px;color:#90b8e8;margin-top:5px;line-height:1.5}
+@media(max-width:500px){.header-illo{width:100px}.header-inner{gap:12px}}
+
+/* SECTION */
+.section-title{font-family:"Nunito",sans-serif;font-size:16px;font-weight:800;color:#fff;background:#0a1f44;border-radius:14px 14px 0 0;padding:12px 20px;display:flex;align-items:center;gap:8px}
+.section-title .icon{font-size:20px}
+.section-block{margin-bottom:28px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(10,31,68,.10)}
+
+/* TABLES */
+.expr-table,.two-col-table{width:100%;border-collapse:collapse;background:#fff}
+.expr-table td,.two-col-table td{padding:0;vertical-align:top;border:2px solid #90b8e8}
+.subcat-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#1050a0;background:#eef4ff;padding:8px 14px 4px;border-bottom:1px solid #c8deff;font-family:"Nunito",sans-serif}
+.col-header-cell{background:#ddeeff;font-family:"Nunito",sans-serif;font-size:12px;font-weight:800;color:#0a3060;padding:10px 14px;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #90b8e8;text-align:center}
+.col-header-firm{background:#fde8e8;color:#8a1a1a}
+.col-header-tent{background:#e6f5ee;color:#0e4428}
+.col-header-agree{background:#e6f5ee;color:#0e4428}
+.zh-ex{display:block;font-size:11.5px;color:#888;margin-top:3px;font-style:normal;line-height:1.5}
+.col-header-partial{background:#fff3e0;color:#6a3000}
+.col-header-disagree{background:#fde8e8;color:#8a1a1a}
+
+/* EXPRESSION LIST */
+.expr-list{list-style:none;padding:6px 14px 10px;margin:0}
+.expr-list li{font-size:13.5px;color:#0a1a30;line-height:1.6;padding:6px 0;border-bottom:1px dashed #d0e4f8}
+.expr-list li:last-child{border-bottom:none}
+.li-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.expr-text-wrap{flex:1}
+.expr-text-wrap u{text-decoration:underline;color:#1050a0}
+.expr-text-wrap em{color:#6a3000;font-style:italic}
+
+/* SEE EXAMPLE TOGGLE */
+.see-ex-btn{margin-top:6px;background:none;border:1.5px solid #90b8e8;border-radius:50px;padding:3px 12px;font-family:"Nunito",sans-serif;font-size:11px;font-weight:700;color:#0a3060;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s}
+.see-ex-btn:hover{background:#ddeeff}
+.see-ex-btn .arr{font-size:9px;transition:transform .2s;display:inline-block}
+.see-ex-btn.open .arr{transform:rotate(180deg)}
+.ex-box{display:none;margin-top:6px;background:#f0f6ff;border:1.5px solid #90b8e8;border-radius:10px;padding:8px 12px;font-size:12.5px;color:#0a2040;line-height:1.65}
+.ex-box.vis{display:block}
+.ex-box .ex-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#1050a0;margin-bottom:4px}
+.zh{display:block;font-size:12px;color:#888;margin-top:1px;font-style:normal;line-height:1.5}
+
+/* LISTEN BUTTON */
+.listen-btn{flex-shrink:0;background:#0a1f44;border:none;border-radius:50px;padding:5px 12px;font-family:"Nunito",sans-serif;font-size:11px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,transform .15s;white-space:nowrap;margin-top:2px}
+.listen-btn:hover{background:#1a3f74;transform:scale(1.05)}
+.listen-btn.playing{background:#1a5fa0;animation:playPulse 1s infinite}
+.listen-btn.no-audio{background:#b0bec8;cursor:default}
+.listen-btn.no-audio:hover{transform:none;background:#b0bec8}
+#tab-panel-1 .listen-btn{background:#b0bec8}
+#tab-panel-1 .listen-btn:hover{background:#b0bec8;transform:none}
+#tab-panel-1 .listen-btn.playing{background:#b0bec8;animation:none}
+.tab-panel:not(#tab-panel-1) .example-block .listen-btn{background:#b0bec8}
+.tab-panel:not(#tab-panel-1) .example-block .listen-btn:hover{background:#b0bec8;transform:none}
+.tab-panel:not(#tab-panel-1) .example-block .listen-btn.playing{background:#b0bec8;animation:none}
+@keyframes playPulse{0%,100%{box-shadow:0 0 0 0 rgba(10,31,68,.4)}50%{box-shadow:0 0 0 8px rgba(10,31,68,0)}}
+.play-tri{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:7px solid #fff}
+
+/* FULL EXAMPLE BLOCK */
+.example-block{background:#e8f2ff;border-top:2px solid #90b8e8;padding:14px 18px}
+.example-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#1050a0;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.example-text{font-size:13.5px;color:#0a2040;line-height:1.8}
+.example-text .spk{font-weight:800;color:#0a1f44}
+.example-text u{text-decoration:underline;text-decoration-color:#1a6ad8}
+.example-text em{font-style:italic;color:#5a3a00}
+.example-listen-row{display:flex;justify-content:flex-end;margin-top:10px}
+
+/* BULLET SECTIONS */
+.bullet-block{background:#fff;padding:14px 18px}
+.bullet-block .strategy{margin-bottom:14px}
+.bullet-block .strategy:last-child{margin-bottom:0}
+.strategy-title{font-size:13px;font-weight:800;color:#0a1f44;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-family:"Nunito",sans-serif}
+.strategy-title .stag{font-size:9px;font-weight:700;background:#ddeeff;color:#0a4080;border:1.5px solid #90b8e8;border-radius:10px;padding:1px 8px;text-transform:uppercase;letter-spacing:.06em}
+.bullet-block ul{list-style:none;padding:0;margin:0}
+.bullet-block ul li{font-size:13.5px;color:#0a1a30;line-height:1.6;padding:5px 0 5px 18px;position:relative;border-bottom:1px dashed #d0e4f8}
+.bullet-block ul li:last-child{border-bottom:none}
+.bullet-block ul li::before{content:"•";position:absolute;left:4px;color:#1050a0;font-weight:700}
+.bullet-block ul li .li-top{padding-left:0}
+
+.tts-reader { margin-top: 6px; padding: 6px 10px; background: #f0f4ff; border-radius: 4px; font-size: 13px; line-height: 2; display: flex; flex-wrap: wrap; }
+.tts-word { position: relative; padding: 0 1px; transition: background 0.1s; border-radius: 2px; }
+.tts-word.current { background: #ffe082; }
+.tts-word.current::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: #e67e22; border-radius: 50%; }
+.tts-word:hover { background: #e0ecff; cursor: pointer; }
+.tts-reader .play-tri{display:none}
+.tts-reader .listen-btn{display:none}
+
+/* NOW PLAYING */
+#np-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(220,235,255,.97);backdrop-filter:blur(10px);border-top:3px solid #90b8e8;padding:10px 20px;display:none;align-items:center;gap:12px;z-index:200}
+#np-bar.vis{display:flex}
+.np-dot{width:10px;height:10px;border-radius:50%;background:#0a1f44;animation:pulse 1s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+#np-text{flex:1;font-size:13px;font-weight:700;color:#0a1f44}
+#np-sub{font-size:10px;color:#4060a0;text-transform:uppercase;letter-spacing:.08em}
+#stop-btn{background:#0a1f44;border:none;border-radius:20px;padding:6px 18px;font-family:"Nunito",sans-serif;font-size:12px;font-weight:700;color:#fff;cursor:pointer}
+#stop-btn:hover{background:#1a3f74}
+
+/* ── TABS ─────────────────────────────────────────────────────────────────── */
+.tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0;padding:16px 16px 0;background:transparent}
+.tab-btn{font-family:"Nunito",sans-serif;font-size:12px;font-weight:800;color:#0a3060;
+  background:#fff;border:2px solid #90b8e8;border-bottom:none;border-radius:10px 10px 0 0;
+  padding:8px 14px;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;
+  display:flex;align-items:center;gap:6px;line-height:1.2}
+.tab-btn:hover{background:#ddeeff}
+.tab-btn.active{background:#0a1f44;color:#fff;border-color:#0a1f44}
+.tab-btn .tnum{display:inline-block;background:#90b8e8;color:#0a1f44;border-radius:50%;
+  width:18px;height:18px;font-size:10px;text-align:center;line-height:18px;flex-shrink:0}
+.tab-btn.active .tnum{background:#fff;color:#0a1f44}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <svg class="header-illo" viewBox="0 0 180 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="90" cy="90" rx="80" ry="20" fill="#1a3a6a" opacity=".6"/>
+      <ellipse cx="90" cy="84" rx="80" ry="20" fill="#1e4070" opacity=".8"/>
+      <rect x="72" y="76" width="22" height="14" rx="2" fill="#fff" opacity=".3"/>
+      <rect x="75" y="78" width="16" height="1.5" rx="1" fill="#90b8e8" opacity=".6"/>
+      <rect x="75" y="81" width="11" height="1.5" rx="1" fill="#90b8e8" opacity=".6"/>
+      <path d="M19 78 Q19 92 30 95 Q41 92 41 78Z" fill="#ff8fab" opacity=".85"/>
+      <rect x="78" y="62" width="14" height="16" rx="4" fill="#f5c8b0"/>
+      <ellipse cx="85" cy="55" rx="11" ry="12" fill="#f5c8b0"/>
+      <path d="M74 48 Q76 38 85 36 Q94 38 96 48 Q93 42 85 41 Q77 42 74 48Z" fill="#2a1408"/>
+      <ellipse cx="85" cy="37" rx="11" ry="5" fill="#2a1408"/>
+      <circle cx="81" cy="53" r="2" fill="#1a1a1a"/><circle cx="89" cy="53" r="2" fill="#1a1a1a"/>
+      <path d="M41 82 Q52 77 57 72" stroke="#f5c8b0" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="59" cy="71" r="4" fill="#f5c8b0"/>
+      <path d="M50 50 Q50 62 60 65 Q70 62 70 50Z" fill="#5090d0" opacity=".85"/>
+      <rect x="53" y="28" width="14" height="16" rx="4" fill="#f5c8b0"/>
+      <ellipse cx="60" cy="22" rx="10" ry="11" fill="#f5c8b0"/>
+      <circle cx="56" cy="20" r="2" fill="#1a1a1a"/><circle cx="64" cy="20" r="2" fill="#1a1a1a"/>
+      <path d="M110 50 Q110 62 120 65 Q130 62 130 50Z" fill="#50b070" opacity=".85"/>
+      <rect x="113" y="28" width="14" height="16" rx="4" fill="#f5c8b0"/>
+      <ellipse cx="120" cy="22" rx="10" ry="11" fill="#f5c8b0"/>
+      <circle cx="117" cy="21" r="1.8" fill="#1a1a1a"/><circle cx="126" cy="21" r="1.8" fill="#1a1a1a"/>
+      <path d="M139 78 Q139 92 150 95 Q161 92 161 78Z" fill="#9060c0" opacity=".85"/>
+      <rect x="143" y="62" width="14" height="16" rx="4" fill="#f5c8b0"/>
+      <ellipse cx="150" cy="56" rx="11" ry="12" fill="#f5c8b0"/>
+      <circle cx="146" cy="54" r="2" fill="#1a1a1a"/><circle cx="154" cy="54" r="2" fill="#1a1a1a"/>
+    </svg>
+    <div class="header-text">
+      <h1>LAN3107 Essential Workplace Communication<br>Effective Oral Interaction</h1>
+      <p>Structure of Workplace Meetings — Revision Reference</p>
+    </div>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn" id="tab-btn-1" onclick="showTab('1')"><span class="tnum">1</span>📋 Opening the Meeting</button>
+  <button class="tab-btn" id="tab-btn-2" onclick="showTab('2')"><span class="tnum">2</span>💡 Making Suggestions</button>
+  <button class="tab-btn" id="tab-btn-3" onclick="showTab('3')"><span class="tnum">3</span>💬 Responding to Suggestions</button>
+  <button class="tab-btn" id="tab-btn-4" onclick="showTab('4')"><span class="tnum">4</span>🙋 Keeping the Discussion Going</button>
+  <button class="tab-btn" id="tab-btn-5" onclick="showTab('5')"><span class="tnum">5</span>⚖️ Discussing & Evaluating Options</button>
+  <button class="tab-btn" id="tab-btn-6" onclick="showTab('6')"><span class="tnum">6</span>🤝 Reaching a Decision</button>
+  <button class="tab-btn" id="tab-btn-7" onclick="showTab('7')"><span class="tnum">7</span>✅ Closing the Meeting</button>
+</div>
+
+<div style="background:#fff8e1;border:1.5px solid #f0c040;border-radius:0 0 10px 10px;
+  padding:7px 18px;font-size:12px;color:#5a3a00;margin-bottom:16px;">
+  💡 <strong>Tip:</strong> Click a numbered tab above to jump to that stage of the meeting.
+</div>
+<div class="tab-panel active" id="tab-panel-1">
+<!-- ═══ 1. OPENING ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">📋</span> 1. Opening the Meeting</div>
+  <table class="expr-table">
+    <tr>
+      <td style="width:50%;border-right:2px solid #90b8e8">
+        <div class="subcat-label">1. Welcoming participants</div>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Welcome to the meeting, everybody. Thank you for joining today. Shall we begin?
+          <span class="zh">欢迎大家参加会议。感谢各位今天的参与。我们开始吧？</span></span><button class="listen-btn no-audio" id="btn-meet_w1" data-tts="Welcome to the meeting, everybody. Thank you for joining today. Shall we begin?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Welcome, everybody. Thanks for attending today's meeting. I think we can start now.
+          <span class="zh">欢迎大家。感谢出席今天的会议。我想我们现在可以开始了。</span></span><button class="listen-btn no-audio" id="btn-meet_w2" data-tts="Welcome, everybody. Thanks for attending today's meeting. I think we can start now."><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+        <div class="subcat-label">2. Stating the purpose of the meeting</div>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">The objective of our meeting today is to …
+          <span class="zh">我们今天会议的目的是……</span></span><button class="listen-btn" id="btn-meet_p1" data-tts="The objective of our meeting today is to"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>The objective of our meeting today is to finalise the budget for next quarter.
+              <span class="zh">我们今天会议的目的是确定下个季度的预算。</span>
+              <button class="listen-btn" id="btn-ex_p1" data-tts="The objective of our meeting today is to finalise the budget for next quarter."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">The purpose of the meeting here today is to …
+          <span class="zh">今天会议的目的是……</span></span><button class="listen-btn" id="btn-meet_p2" data-tts="The purpose of the meeting here today is to"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>The purpose of the meeting here today is to discuss our new eco-friendly store policy.
+              <span class="zh">今天会议的目的是讨论我们新的环保店铺政策。</span>
+              <button class="listen-btn" id="btn-ex_p2" data-tts="The purpose of the meeting here today is to discuss our new eco-friendly store policy."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Today, we are going to discuss …
+          <span class="zh">今天，我们将讨论……</span></span><button class="listen-btn" id="btn-meet_p3" data-tts="Today, we are going to discuss"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Today, we are going to discuss ways to reduce our carbon footprint in the office.
+              <span class="zh">今天，我们将讨论减少办公室碳足迹的方法。</span>
+              <button class="listen-btn" id="btn-ex_p3" data-tts="Today, we are going to discuss ways to reduce our carbon footprint in the office."><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+        <div class="subcat-label">3. Checking if participants have a copy of the agenda</div>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Have you all got a copy of the agenda?
+          <span class="zh">大家都有议程的副本吗？</span></span><button class="listen-btn no-audio" id="btn-meet_a1" data-tts="Have you all got a copy of the agenda?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Does everyone have a copy of the agenda?
+          <span class="zh">每个人都有议程的副本吗？</span></span><button class="listen-btn no-audio" id="btn-meet_a2" data-tts="Does everyone have a copy of the agenda?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+      </td>
+      <td style="width:50%">
+        <div class="subcat-label">4. Starting the meeting</div>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">So, let's begin with our first agenda item …
+          <span class="zh">那么，让我们开始第一个议程项目……</span></span><button class="listen-btn" id="btn-meet_s1" data-tts="So, let's begin with our first agenda item"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>So, let's begin with our first agenda item, which is the new recycling programme.
+              <span class="zh">那么，让我们开始第一个议程项目，即新的回收计划。</span>
+              <button class="listen-btn" id="btn-ex_s1" data-tts="So, let's begin with our first agenda item, which is the new recycling programme."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Let's begin by talking about …
+          <span class="zh">让我们从讨论……开始</span></span><button class="listen-btn" id="btn-meet_s2" data-tts="Let's begin by talking about"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Let's begin by talking about the feedback we received from our customers last month.
+              <span class="zh">让我们从讨论上个月收到的客户反馈开始。</span>
+              <button class="listen-btn" id="btn-ex_s2" data-tts="Let's begin by talking about the feedback we received from our customers last month."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">We are going to cover a few agenda items.
+          <span class="zh">我们将涵盖几个议程项目。</span></span><button class="listen-btn" id="btn-meet_s3" data-tts="We are going to cover a few agenda items"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>We are going to cover three agenda items: staffing, budget, and the new product launch.
+              <span class="zh">我们将涵盖三个议程项目：人员配置、预算和新产品发布。</span>
+              <button class="listen-btn" id="btn-ex_s3" data-tts="We are going to cover three agenda items: staffing, budget, and the new product launch."><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+        <div class="subcat-label">5. Inviting an opinion</div>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I would like to hear your opinions on this topic.
+          <span class="zh">我想听听大家对这个话题的看法。</span></span><button class="listen-btn no-audio" id="btn-meet_inv1" data-tts="I would like to hear your opinions on this topic."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">What's your position on this issue / idea?
+          <span class="zh">你对这个问题/想法持什么立场？</span></span><button class="listen-btn no-audio" id="btn-meet_inv2" data-tts="What's your position on this issue or idea?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">What are your opinions on this topic?
+          <span class="zh">你对这个话题有什么看法？</span></span><button class="listen-btn no-audio" id="btn-meet_inv3" data-tts="What are your opinions on this topic?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+        <div class="subcat-label">6. Expressing an opinion</div>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I strongly suggest / recommend …
+          <span class="zh">我强烈建议/推荐……</span></span><button class="listen-btn no-audio" id="btn-meet_exp1" data-tts="I strongly recommend we switch to a more sustainable approach."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>I strongly recommend we switch to reusable packaging. It will save costs in the long run.
+              <span class="zh">我强烈建议我们改用可重复使用的包装。从长远来看可以节省成本。</span>
+              <button class="listen-btn" id="btn-ex_f1" data-tts="I strongly recommend we switch to reusable packaging. It will save costs in the long run."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Why don't we …?
+          <span class="zh">我们为什么不……？</span></span><button class="listen-btn no-audio" id="btn-meet_exp2" data-tts="Why don't we consider a more cost-effective option?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Why don't we run a trial for three months and then review the results?
+              <span class="zh">我们为什么不试行三个月，然后评估结果呢？</span>
+              <button class="listen-btn" id="btn-ex_t8" data-tts="Why don't we run a trial for three months and then review the results?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Perhaps we should …
+          <span class="zh">也许我们应该……</span></span><button class="listen-btn no-audio" id="btn-meet_exp3" data-tts="Perhaps we should look at the data before making a final decision."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Perhaps we should look at what our competitors are doing before making a final decision.
+              <span class="zh">也许我们应该先看看竞争对手在做什么，然后再做最终决定。</span>
+              <button class="listen-btn" id="btn-ex_t4" data-tts="Perhaps we should look at what our competitors are doing before making a final decision."><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <div class="example-block">
+    <div class="example-lbl"><svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="#1050a0"/></svg> Example for opening a meeting</div>
+    <div class="example-text">Good morning, everyone. <u>Welcome to today's meeting.</u> Let's start now. <u>Does everyone have a copy of the agenda?</u> [pause] <u>The purpose of today's meeting is to discuss</u> green measures to be implemented in the stores. We are going to cover two <u>agenda items:</u> ways to make our retail shops more eco-friendly <strong>and</strong> ways to promote our sustainable image to the community. Let's begin by talking about ways to make our retail shops more eco-friendly.<span class="zh-ex">大家早上好。<u>欢迎参加今天的会议。</u>我们现在开始。<u>每个人都有议程的副本吗？</u><u>今天会议的目的是讨论</u>将在门店实施的环保措施。我们将涵盖两个<u>议程项目：</u>使零售店更环保的方法<strong>以及</strong>向社区推广可持续形象的方法。让我们从讨论使零售店更环保的方法开始。</span></div>
+    <div class="example-listen-row"><button class="listen-btn no-audio" id="btn-meet_ex" data-tts="Good morning, everyone. Welcome to today's meeting. Let's start now. Does everyone have a copy of the agenda? The purpose of today's meeting is to discuss green measures to be implemented in the stores. We are going to cover two agenda items: ways to make our retail shops more eco-friendly, and ways to promote our sustainable image to the community. Let's begin by talking about ways to make our retail shops more eco-friendly."><div class="play-tri"></div>Listen to full example</button></div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-panel-2">
+<!-- ═══ 2. MAKING SUGGESTIONS ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">💡</span> 2. Making Suggestions</div>
+  <table class="two-col-table">
+    <tr>
+      <td class="col-header-cell col-header-firm">Firm and Strong</td>
+      <td class="col-header-cell col-header-tent">Tentative</td>
+    </tr>
+    <tr>
+      <td>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I strongly recommend …
+          <span class="zh">我强烈建议……</span></span><button class="listen-btn no-audio" id="btn-sug_f1" data-tts="I strongly recommend we switch to reusable packaging. It will save costs in the long run."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>I strongly recommend we switch to reusable packaging. It will save costs in the long run.
+              <span class="zh">我强烈建议我们改用可重复使用的包装。从长远来看可以节省成本。</span>
+              <button class="listen-btn" id="btn-ex_f1" data-tts="I strongly recommend we switch to reusable packaging. It will save costs in the long run."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I suggest …
+          <span class="zh">我建议……</span></span><button class="listen-btn no-audio" id="btn-sug_f2" data-tts="I suggest organising a staff workshop on sustainability before the end of the month."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>I suggest organising a staff workshop on sustainability before the end of the month.
+              <span class="zh">我建议在月底前组织一次员工可持续发展研讨会。</span>
+              <button class="listen-btn" id="btn-ex_f2" data-tts="I suggest organising a staff workshop on sustainability before the end of the month."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">In my opinion, we should …
+          <span class="zh">在我看来，我们应该……</span></span><button class="listen-btn no-audio" id="btn-sug_f3" data-tts="In my opinion, we should invest in solar panels for our main store."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>In my opinion, we should invest in solar panels for our main store.
+              <span class="zh">在我看来，我们应该为主要店铺投资太阳能板。</span>
+              <button class="listen-btn" id="btn-ex_f3" data-tts="In my opinion, we should invest in solar panels for our main store."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">In my view, the only solution is …
+          <span class="zh">依我看，唯一的解决办法是……</span></span><button class="listen-btn no-audio" id="btn-sug_f4" data-tts="In my view, the only solution is to reduce plastic use across all departments."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>In my view, the only solution is to reduce plastic use across all departments.
+              <span class="zh">依我看，唯一的解决办法是在所有部门减少塑料使用。</span>
+              <button class="listen-btn" id="btn-ex_f4" data-tts="In my view, the only solution is to reduce plastic use across all departments."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Let's …
+          <span class="zh">让我们……</span></span><button class="listen-btn no-audio" id="btn-sug_f5" data-tts="Let's set a clear deadline so that everyone knows what to prepare."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Let's set a clear deadline so that everyone knows what to prepare.
+              <span class="zh">让我们设定一个明确的截止日期，这样每个人都知道该准备什么。</span>
+              <button class="listen-btn" id="btn-ex_f5" data-tts="Let's set a clear deadline so that everyone knows what to prepare."><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">How about …?
+          <span class="zh">……怎么样？</span></span><button class="listen-btn no-audio" id="btn-sug_t1" data-tts="How about conducting a workshop on risk management as our coming staff development activity?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>How about conducting a workshop on risk management as our coming staff development activity?
+              <span class="zh">举办一次风险管理研讨会作为我们即将进行的员工发展活动怎么样？</span>
+              <button class="listen-btn" id="btn-ex_t1" data-tts="How about conducting a workshop on risk management as our coming staff development activity?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">It might be a good idea to …
+          <span class="zh">……可能是个好主意。</span></span><button class="listen-btn no-audio" id="btn-sug_t2" data-tts="It might be a good idea to survey our customers first to understand their preferences."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>It might be a good idea to survey our customers first to understand their preferences.
+              <span class="zh">先调查一下我们的客户以了解他们的偏好可能是个好主意。</span>
+              <button class="listen-btn" id="btn-ex_t2" data-tts="It might be a good idea to survey our customers first to understand their preferences."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">May I suggest …?
+          <span class="zh">我可以建议……吗？</span></span><button class="listen-btn no-audio" id="btn-sug_t3" data-tts="May I suggest we invite an environmental consultant to advise us on best practices?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>May I suggest we invite an environmental consultant to advise us on best practices?
+              <span class="zh">我可以建议我们邀请一位环境顾问来指导我们最佳做法吗？</span>
+              <button class="listen-btn" id="btn-ex_t3" data-tts="May I suggest we invite an environmental consultant to advise us on best practices?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Perhaps we should / could …
+          <span class="zh">也许我们应该/可以……</span></span><button class="listen-btn no-audio" id="btn-sug_t4" data-tts="Perhaps we should look at what our competitors are doing before making a final decision."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Perhaps we should look at what our competitors are doing before making a final decision.
+              <span class="zh">也许我们应该先看看竞争对手在做什么，然后再做最终决定。</span>
+              <button class="listen-btn" id="btn-ex_t4" data-tts="Perhaps we should look at what our competitors are doing before making a final decision."><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Shall we …?
+          <span class="zh">我们……好吗？</span></span><button class="listen-btn no-audio" id="btn-sug_t5" data-tts="Shall we put this idea to a vote so we can move forward together?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Shall we put this idea to a vote so we can move forward together?
+              <span class="zh">我们把想法投票表决，以便共同推进好吗？</span>
+              <button class="listen-btn" id="btn-ex_t5" data-tts="Shall we put this idea to a vote so we can move forward together?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">What about …?
+          <span class="zh">……怎么样？</span></span><button class="listen-btn no-audio" id="btn-sug_t6" data-tts="What about introducing a rewards scheme for customers who bring their own bags?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>What about introducing a rewards scheme for customers who bring their own bags?
+              <span class="zh">为自带袋子的顾客推出奖励计划怎么样？</span>
+              <button class="listen-btn" id="btn-ex_t6" data-tts="What about introducing a rewards scheme for customers who bring their own bags?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">What if …?
+          <span class="zh">如果……呢？</span></span><button class="listen-btn no-audio" id="btn-sug_t7" data-tts="What if we replace all plastic cups in the office with reusable ones?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>What if we replace all plastic cups in the office with reusable ones?
+              <span class="zh">如果我们把办公室所有的塑料杯都换成可重复使用的呢？</span>
+              <button class="listen-btn" id="btn-ex_t7" data-tts="What if we replace all plastic cups in the office with reusable ones?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Why don't we …?
+          <span class="zh">我们为什么不……？</span></span><button class="listen-btn no-audio" id="btn-sug_t8" data-tts="Why don't we run a trial for three months and then review the results?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Why don't we run a trial for three months and then review the results?
+              <span class="zh">我们为什么不试行三个月，然后评估结果呢？</span>
+              <button class="listen-btn" id="btn-ex_t8" data-tts="Why don't we run a trial for three months and then review the results?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Would it be suitable / possible to …?
+          <span class="zh">……是否合适/可能？</span></span><button class="listen-btn no-audio" id="btn-sug_t9" data-tts="Would it be possible to get the data before our next meeting so we can be better prepared?"><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>Would it be possible to get the data before our next meeting so we can be better prepared?
+              <span class="zh">是否可以在下次会议之前拿到数据，以便我们能更好地准备？</span>
+              <button class="listen-btn" id="btn-ex_t9" data-tts="Would it be possible to get the data before our next meeting so we can be better prepared?"><div class="play-tri"></div>Listen</button></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I am wondering if we could …
+          <span class="zh">我在想我们是否能够……</span></span><button class="listen-btn no-audio" id="btn-sug_t10" data-tts="I am wondering if we could partner with a local charity to promote our green image."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example</div>I am wondering if we could partner with a local charity to promote our green image.
+              <span class="zh">我在想我们是否能够与当地慈善机构合作，推广我们的绿色形象。</span>
+              <button class="listen-btn" id="btn-ex_t10" data-tts="I am wondering if we could partner with a local charity to promote our green image."><div class="play-tri"></div>Listen</button></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<div class="tab-panel" id="tab-panel-3">
+<!-- ═══ 3. RESPONDING ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">💬</span> 3. Responding to Suggestions</div>
+  <table class="two-col-table">
+    <tr>
+      <td class="col-header-cell col-header-agree" style="width:33.3%">Agreement</td>
+      <td class="col-header-cell col-header-partial" style="width:33.3%">Partial Agreement</td>
+      <td class="col-header-cell col-header-disagree" style="width:33.3%">Disagreement</td>
+    </tr>
+    <tr>
+      <td style="width:33.3%">
+        <ul class="expr-list">
+          <li><div class="li-top"><span class="expr-text-wrap">Yes, sure.
+          <span class="zh">是的，当然。</span></span><button class="listen-btn no-audio" id="btn-resp_a1" data-tts="Yes, sure."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">I think so.
+          <span class="zh">我也这么认为。</span></span><button class="listen-btn no-audio" id="btn-resp_a2" data-tts="I think so."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">That's what I'm going to say.
+          <span class="zh">这正是我想说的。</span></span><button class="listen-btn no-audio" id="btn-resp_a3" data-tts="That's what I'm going to say."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">You're right.
+          <span class="zh">你说得对。</span></span><button class="listen-btn no-audio" id="btn-resp_a4" data-tts="You're right."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">I agree.
+          <span class="zh">我同意。</span></span><button class="listen-btn no-audio" id="btn-resp_a5" data-tts="I agree."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">Absolutely.
+          <span class="zh">完全同意。</span></span><button class="listen-btn no-audio" id="btn-resp_a6" data-tts="Absolutely."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">That's a good idea.
+          <span class="zh">这是个好主意。</span></span><button class="listen-btn no-audio" id="btn-resp_a7" data-tts="That's a good idea."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">I can't agree with you more.
+          <span class="zh">我非常同意你。</span></span><button class="listen-btn no-audio" id="btn-resp_a8" data-tts="I can't agree with you more."><div class="play-tri"></div>Listen</button></div></li>
+        </ul>
+      </td>
+      <td style="width:33.3%">
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">That's an option, but …
+          <span class="zh">这是一个选择，但是……</span></span><button class="listen-btn no-audio" id="btn-resp_p1" data-tts="That's an option, but I think we should consider rescheduling instead of cancelling."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t3_1" data-tts="That's an option, but I think we should consider rescheduling instead of cancelling."><div class="play-tri"></div>Listen</button></div>That's an option, but I think we should consider rescheduling instead of cancelling.<br><span class="zh">这是一个选择，但我认为我们应该考虑重新安排而不是取消。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">It's a possibility, but …
+          <span class="zh">这是一种可能性，但是……</span></span><button class="listen-btn no-audio" id="btn-resp_p2" data-tts="It's a possibility, but we need to think about the extra costs involved."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t3_2" data-tts="It's a possibility, but we need to think about the extra costs involved."><div class="play-tri"></div>Listen</button></div>It's a possibility, but we need to think about the extra costs involved.<br><span class="zh">这是一种可能性，但我们需要考虑涉及到的额外成本。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Well, I see your point, but …
+          <span class="zh">嗯，我明白你的意思，但是……</span></span><button class="listen-btn no-audio" id="btn-resp_p3" data-tts="Well, I see your point, but extending the deadline might delay the whole project."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t3_3" data-tts="Well, I see your point, but extending the deadline might delay the whole project."><div class="play-tri"></div>Listen</button></div>Well, I see your point, but extending the deadline might delay the whole project.<br><span class="zh">嗯，我明白你的意思，但延长截止日期可能会延误整个项目。</span></div>
+          </li>
+        </ul>
+      </td>
+      <td style="width:33.3%">
+        <ul class="expr-list">
+          <li><div class="li-top"><span class="expr-text-wrap">I'm afraid I can't go along with you.
+          <span class="zh">恐怕我不能同意你的看法。</span></span><button class="listen-btn no-audio" id="btn-resp_d1" data-tts="I'm afraid I can't go along with you."><div class="play-tri"></div>Listen</button></div></li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I don't think we could …
+          <span class="zh">我不认为我们可以……</span></span><button class="listen-btn no-audio" id="btn-resp_d2" data-tts="I don't think we could finish the whole report by tomorrow. We need at least three days."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t3_4" data-tts="I don't think we could finish the whole report by tomorrow. We need at least three days."><div class="play-tri"></div>Listen</button></div>I don't think we could finish the whole report by tomorrow. We need at least three days.<br><span class="zh">我不认为我们能在明天之前完成整个报告。我们至少需要三天。</span></div>
+          </li>
+          <li><div class="li-top"><span class="expr-text-wrap">Sorry, I don't quite see it the same way.
+          <span class="zh">抱歉，我不太认同。</span></span><button class="listen-btn no-audio" id="btn-resp_d3" data-tts="Sorry, I don't quite see it the same way."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">I don't quite agree with you.
+          <span class="zh">我不太同意你的看法。</span></span><button class="listen-btn no-audio" id="btn-resp_d4" data-tts="I don't quite agree with you."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">Sorry, that may not be possible.
+          <span class="zh">抱歉，那可能不行。</span></span><button class="listen-btn no-audio" id="btn-resp_d5" data-tts="Sorry, that may not be possible."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">I'm not sure about that.
+          <span class="zh">我不太确定。</span></span><button class="listen-btn no-audio" id="btn-resp_d6" data-tts="I'm not sure about that."><div class="play-tri"></div>Listen</button></div></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <div class="example-block">
+    <div class="example-lbl"><svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="#1050a0"/></svg> Examples on making suggestions and responding to suggestions</div>
+    <div class="example-text">
+      <p><span class="spk">Tracy:</span> <u>I suggest that</u> <u>we should</u> reduce our paper usage. For example, we could replace paper bags with reusable or biodegradable alternatives. <u>Do you think that's a good idea?</u></p>
+      <p style="margin-top:8px"><span class="spk">Chris:</span> <u>That's a great idea!</u> <u>We should</u> also encourage customers to bring their own bags. <u>Maybe we can</u> offer a small discount for those who do …</p>
+      <p style="margin-top:8px"><span class="spk">Dave:</span> <u>Can we all agree that we should</u> present these options to the management team?</p>
+      <p style="margin-top:8px"><span class="spk">Tracy:</span> Sure. Let's do that.</p>
+      <p style="margin-top:8px"><span class="spk">Dave:</span> Excellent! <u>Let's move on</u> to the second agenda item. <u>What are your opinions on</u> the ways to promote our sustainable image to the community? <em>(Discussion continues)</em></p>
+      <span class="zh-ex"><span class="spk">Tracy:</span> <u>我建议</u><u>我们应该</u>减少纸张使用。例如，我们可以用可重复使用或可生物降解的替代品来取代纸袋。<u>你觉得这是个好主意吗？</u><br><span class="spk">Chris:</span> <u>好主意！</u><u>我们还应该</u>鼓励顾客自带袋子。<u>也许我们可以</u>为这样做的人提供小额折扣……<br><span class="spk">Dave:</span> <u>我们是否都同意应该</u>把这些方案提交给管理团队？<br><span class="spk">Tracy:</span> 当然。我们就这样做。<br><span class="spk">Dave:</span> 太好了！<u>让我们继续</u>第二个议程项目。<u>你对</u>向社区推广可持续形象的方法<u>有什么看法？</u><em>（讨论继续）</em></span></div>
+  
+    <div class="example-listen-row"><button class="listen-btn" id="btn-resp_ex" data-tts="Tracy: I suggest that we should reduce our paper usage. For example, we could replace paper bags with reusable or biodegradable alternatives. Do you think that's a good idea? | Chris: That's a great idea! We should also encourage customers to bring their own bags. Maybe we can offer a small discount for those who do. | Dave: Can we all agree that we should present these options to the management team? | Tracy: Sure. Let's do that. | Dave: Excellent! Let's move on to the second agenda item. What are your opinions on the ways to promote our sustainable image to the community?"><div class="play-tri"></div>Listen to full example</button></div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-panel-4">
+<!-- ═══ 4. INTERACTION STRATEGIES ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">🙋</span> 4. Keeping the Discussion Going</div>
+  <div class="bullet-block">
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Interrupting</span> Politely interrupt a speaker when you have something to add</div>
+      <ul>
+        <li><div class="li-top"><span class="li-text">Excuse me, could I add something here?
+            <span class="zh">打扰一下，我能在这里补充一点吗？</span></span><button class="listen-btn no-audio" id="btn-int_i1" data-tts="Excuse me, could I add something here?"><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">May I jump in for a moment?
+            <span class="zh">我可以插一句话吗？</span></span><button class="listen-btn no-audio" id="btn-int_i2" data-tts="May I jump in for a moment?"><div class="play-tri"></div>Listen</button></div></li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Asking for clarification</span> If you do not fully understand a point, ask for clarification</div>
+      <ul>
+        <li>
+          <div class="li-top"><span class="li-text">Could you please clarify what you mean by …?
+            <span class="zh">你能澄清一下你说的……是什么意思吗？</span></span><button class="listen-btn no-audio" id="btn-int_c1" data-tts="Could you please clarify what you mean by proactive? Are you suggesting we start before the deadline?"><div class="play-tri"></div>Listen</button></div>
+          <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+          <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t4_1" data-tts="Could you please clarify what you mean by "proactive"? Are you suggesting we start before the deadline?"><div class="play-tri"></div>Listen</button></div>Could you please clarify what you mean by "proactive"? Are you suggesting we start before the deadline?<br><span class="zh">你能澄清一下你说的"积极主动"是什么意思吗？你是建议我们在截止日期之前开始吗？</span></div>
+        </li>
+        <li>
+          <div class="li-top"><span class="li-text">Can you give an example of …?
+            <span class="zh">你能举一个……的例子吗？</span></span><button class="listen-btn no-audio" id="btn-int_c2" data-tts="Can you give an example of what a flexible approach would look like in practice?"><div class="play-tri"></div>Listen</button></div>
+          <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+          <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t4_2" data-tts="Can you give an example of what a flexible approach would look like in practice?"><div class="play-tri"></div>Listen</button></div>Can you give an example of what a flexible approach would look like in practice?<br><span class="zh">你能举一个例子说明灵活的方法在实践中是怎样的吗？</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Asking for contributions</span> Engage all members by asking for their thoughts</div>
+      <ul>
+        <li><div class="li-top"><span class="li-text">I'd like to hear your thoughts on this, [Name].
+            <span class="zh">我想听听你对此的看法，[姓名]。</span></span><button class="listen-btn no-audio" id="btn-int_e1" data-tts="I'd like to hear your thoughts on this."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">[Name], what do you think about this idea?
+            <span class="zh">[姓名]，你觉得这个想法怎么样？</span></span><button class="listen-btn no-audio" id="btn-int_e2" data-tts="What do you think about this idea?"><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">I would like to hear your opinions on this topic.
+            <span class="zh">我想听听你对此话题的看法。</span></span><button class="listen-btn no-audio" id="btn-int_e3" data-tts="I would like to hear your opinions on this topic."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">What's your position on this issue?
+            <span class="zh">你对这个问题持什么立场？</span></span><button class="listen-btn no-audio" id="btn-int_e4" data-tts="What's your position on this issue?"><div class="play-tri"></div>Listen</button></div></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<div class="tab-panel" id="tab-panel-5">
+<!-- ═══ 5. USEFUL EXPRESSIONS ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">⚖️</span> 5. Discussing & Evaluating Options</div>
+  <table class="two-col-table">
+    <tr>
+      <td class="col-header-cell" style="width:50%">Stating Preference / Advocating Your Ideas</td>
+      <td class="col-header-cell" style="width:50%">Evaluating Suggestions</td>
+    </tr>
+    <tr>
+      <td>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I (would) prefer (not) …
+          <span class="zh">我（更）宁愿（不）……</span></span><button class="listen-btn no-audio" id="btn-pref1" data-tts="I would prefer not to make any changes until we have seen the full data."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_1" data-tts="I would prefer not to make any changes until we have seen the full data."><div class="play-tri"></div>Listen</button></div>I would prefer not to make any changes until we have seen the full data.<br><span class="zh">我更愿意在看到完整数据之前不做任何更改。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">I would rather (not) …
+          <span class="zh">我宁愿（不）……</span></span><button class="listen-btn no-audio" id="btn-pref2" data-tts="I would rather not commit to a date until we have spoken to all the stakeholders."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_2" data-tts="I would rather not commit to a date until we have spoken to all the stakeholders."><div class="play-tri"></div>Listen</button></div>I would rather not commit to a date until we have spoken to all the stakeholders.<br><span class="zh">我宁愿在跟所有利益相关者谈过之前不确定日期。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">My preference is …
+          <span class="zh">我的偏好是……</span></span><button class="listen-btn no-audio" id="btn-pref3" data-tts="My preference is to roll out the new system gradually rather than all at once."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_3" data-tts="My preference is to roll out the new system gradually rather than all at once."><div class="play-tri"></div>Listen</button></div>My preference is to roll out the new system gradually rather than all at once.<br><span class="zh">我的偏好是逐步推出新系统，而不是一次性全部推行。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">From my perspective, … is better.
+          <span class="zh">从我的角度来看，……更好。</span></span><button class="listen-btn no-audio" id="btn-pref4" data-tts="From my perspective, option A is better because it is more cost-effective in the long run."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_4" data-tts="From my perspective, option A is better because it is more cost-effective in the long run."><div class="play-tri"></div>Listen</button></div>From my perspective, option A is better because it is more cost-effective in the long run.<br><span class="zh">从我的角度来看，选项A更好，因为从长远来看它更具成本效益。</span></div>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">However, …
+          <span class="zh">然而，……</span></span><button class="listen-btn no-audio" id="btn-eval1" data-tts="The new plan sounds exciting. However, we need to think carefully about the additional costs."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_5" data-tts="The new plan sounds exciting. However, we need to think carefully about the additional costs."><div class="play-tri"></div>Listen</button></div>The new plan sounds exciting. However, we need to think carefully about the additional costs.<br><span class="zh">新计划听起来令人兴奋。然而，我们需要仔细考虑额外成本。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">Although … / Whereas … / While …
+          <span class="zh">虽然……/然而……/尽管……</span></span><button class="listen-btn no-audio" id="btn-eval2" data-tts="Although the idea is creative, I think we need more time to plan the details properly."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_6" data-tts="Although the idea is creative, I think we need more time to plan the details properly."><div class="play-tri"></div>Listen</button></div>Although the idea is creative, I think we need more time to plan the details properly.<br><span class="zh">虽然这个想法很有创意，但我认为我们需要更多时间来妥善规划细节。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">…, but …
+          <span class="zh">……, 但是……</span></span><button class="listen-btn no-audio" id="btn-eval3" data-tts="The proposal looks promising, but we need to consider the impact on our current budget."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_7" data-tts="The proposal looks promising, but we need to consider the impact on our current budget."><div class="play-tri"></div>Listen</button></div>The proposal looks promising, but we need to consider the impact on our current budget.<br><span class="zh">这个提案看起来很有前景，但我们需要考虑对我们当前预算的影响。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">On the one hand, … / On the other hand, …
+          <span class="zh">一方面，……/另一方面，……</span></span><button class="listen-btn no-audio" id="btn-eval4" data-tts="On the one hand, the idea is cost-effective. On the other hand, it may take longer to implement."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t5_8" data-tts="On the one hand, expanding into the online market could significantly increase our revenue. On the other hand, it would require substantial investment in logistics and customer support."><div class="play-tri"></div>Listen</button></div>On the one hand, expanding into the online market could significantly increase our revenue. On the other hand, it would require substantial investment in logistics and customer support.<br><span class="zh">一方面，拓展在线市场可以显著增加我们的收入。另一方面，这需要在物流和客户支持方面进行大量投资。</span></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="tab-panel" id="tab-panel-6">
+<!-- ═══ 6. REACHING A DECISION ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">🤝</span> 6. Reaching a Decision</div>
+  <table class="two-col-table">
+<tr>
+      <td class="col-header-cell">Recognising Common Ground</td>
+      <td class="col-header-cell">Acknowledging the Need to Compromise</td>
+    </tr>
+    <tr>
+      <td>
+        <ul class="expr-list">
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">It seems that we can all agree that …
+          <span class="zh">看来我们都同意……</span></span><button class="listen-btn no-audio" id="btn-cg1" data-tts="It seems that we can all agree that reducing plastic use is the right thing to do."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t6_1" data-tts="It seems that we can all agree that reducing plastic use is the right thing to do."><div class="play-tri"></div>Listen</button></div>It seems that we can all agree that reducing plastic use is the right thing to do.<br><span class="zh">看来我们都同意减少塑料使用是正确的做法。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">It seems that we have a consensus that …
+          <span class="zh">看来我们达成了共识……</span></span><button class="listen-btn no-audio" id="btn-cg2" data-tts="It seems that we have a consensus that the event should be held in the second quarter."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t6_2" data-tts="It seems that we have a consensus that the event should be held in the second quarter."><div class="play-tri"></div>Listen</button></div>It seems that we have a consensus that the event should be held in the second quarter.<br><span class="zh">看来我们达成了共识，活动应该在第二季度举行。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">We all concur that …
+          <span class="zh">我们都同意……</span></span><button class="listen-btn no-audio" id="btn-cg3" data-tts="We all concur that further research is needed before we commit to a final plan."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t6_3" data-tts="We all concur that further research is needed before we commit to a final plan."><div class="play-tri"></div>Listen</button></div>We all concur that further research is needed before we commit to a final plan.<br><span class="zh">我们都同意在确定最终计划之前需要进一步研究。</span></div>
+          </li>
+          <li>
+            <div class="li-top"><span class="expr-text-wrap">We are all in alignment that …
+          <span class="zh">我们都一致认为……</span></span><button class="listen-btn no-audio" id="btn-cg4" data-tts="We are all in alignment that customer satisfaction must remain our top priority."><div class="play-tri"></div>Listen</button></div>
+            <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+            <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t6_4" data-tts="We are all in alignment that customer satisfaction must remain our top priority."><div class="play-tri"></div>Listen</button></div>We are all in alignment that customer satisfaction must remain our top priority.<br><span class="zh">我们都一致认为客户满意度必须保持为我们的首要任务。</span></div>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul class="expr-list">
+          <li><div class="li-top"><span class="expr-text-wrap">It seems we have differing views, but maybe we could find a middle ground.
+          <span class="zh">看来我们有不同意见，但也许我们可以找到一个折中方案。</span></span><button class="listen-btn no-audio" id="btn-ack1" data-tts="It seems we have differing views, but maybe we could find a middle ground."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">We don't quite agree on every point, so let's explore options that we could all support.
+          <span class="zh">我们不是在每个点上都完全同意，所以让我们探讨一下我们都能支持的选择。</span></span><button class="listen-btn no-audio" id="btn-ack2" data-tts="We don't quite agree on every point, so let's explore options that we could all support."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">It seems like we have different options, so let's see if we meet in the middle.
+          <span class="zh">看来我们有不同的选择，让我们看看是否能折中一下。</span></span><button class="listen-btn no-audio" id="btn-ack3" data-tts="It seems like we have different options, so let's see if we meet in the middle."><div class="play-tri"></div>Listen</button></div></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-header-cell">Compromising</td>
+      <td class="col-header-cell">Revisiting the Agenda in the Next Meeting</td>
+    </tr>
+    <tr>
+      <td>
+        <ul class="expr-list">
+          <li><div class="li-top"><span class="expr-text-wrap">On second thoughts, your suggestion may be more cost-effective / workable / practical. Let's make it our final decision then.
+          <span class="zh">再想想，你的建议可能更具成本效益/可行/实用。那我们就把它作为最终决定吧。</span></span><button class="listen-btn no-audio" id="btn-comp1" data-tts="On second thoughts, your suggestion may be more cost-effective and workable. Let's make it our final decision then."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">On further reflection, your idea seems more practical / sensible / feasible. I can go along with that.
+          <span class="zh">进一步反思后，你的想法似乎更实际/明智/可行。我可以同意。</span></span><button class="listen-btn no-audio" id="btn-comp2" data-tts="On further reflection, your idea seems more practical and sensible. I can go along with that."><div class="play-tri"></div>Listen</button></div></li>
+        </ul>
+      </td>
+      <td>
+        <ul class="expr-list">
+          <li><div class="li-top"><span class="expr-text-wrap">It seems like we don't have time to make a decision today. Let's discuss the item again in our next meeting.
+          <span class="zh">看来我们今天没有时间做决定了。让我们在下一次会议上再讨论这个项目。</span></span><button class="listen-btn no-audio" id="btn-rev1" data-tts="It seems like we don't have time to make a decision today. Let's discuss the item again in our next meeting."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">Let's revisit the agenda item again in the next meeting.
+          <span class="zh">让我们在下一次会议上重新讨论这个议程项目。</span></span><button class="listen-btn no-audio" id="btn-rev2" data-tts="Let's revisit the agenda item again in the next meeting."><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">Rather than rushing to make a decision now, shall we revisit this item in our next meeting?
+          <span class="zh">与其现在匆忙做决定，我们不如在下一次会议上重新讨论这个项目？</span></span><button class="listen-btn no-audio" id="btn-rev3" data-tts="Rather than rushing to make a decision now, shall we revisit this item in our next meeting?"><div class="play-tri"></div>Listen</button></div></li>
+          <li><div class="li-top"><span class="expr-text-wrap">We can't reach a decision today, so let's carry this conversation over to our next meeting.
+          <span class="zh">我们今天无法达成决定，所以让我们把这个讨论延续到下一次会议。</span></span><button class="listen-btn no-audio" id="btn-rev4" data-tts="We can't reach a decision today, so let's carry this conversation over to our next meeting."><div class="play-tri"></div>Listen</button></div></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+<div class="tab-panel" id="tab-panel-7">
+<!-- ═══ 6. CLOSING ═══ -->
+<div class="section-block">
+  <div class="section-title"><span class="icon">✅</span> 7. Closing the Meeting</div>
+  <div class="bullet-block">
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Signalling the end of the meeting</span></div>
+      <ul>
+        <li><div class="li-top"><span class="li-text">It looks like we've run out of time, so I guess we'll finish here.
+            <span class="zh">看来我们时间不够了，我想我们就到此为止吧。</span></span><button class="listen-btn no-audio" id="btn-close_e1" data-tts="It looks like we've run out of time, so I guess we'll finish here."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">I think that's all we have time for today. Let's talk more about this next time.
+            <span class="zh">我想我们今天就到这里。下次我们再详谈。</span></span><button class="listen-btn no-audio" id="btn-close_e2" data-tts="I think that's all we have time for today. Let's talk more about this next time."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">I think we've covered everything on the agenda.
+            <span class="zh">我想我们已经涵盖了议程上的所有内容。</span></span><button class="listen-btn no-audio" id="btn-close_e3" data-tts="I think we've covered everything on the agenda."><div class="play-tri"></div>Listen</button></div></li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Checking for any other business</span></div>
+      <ul>
+        <li><div class="li-top"><span class="li-text">Is there any other business?
+            <span class="zh">还有其他事项吗？</span></span><button class="listen-btn no-audio" id="btn-close_aob1" data-tts="Is there any other business?"><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">Does anyone have any other business they would like to discuss?
+            <span class="zh">有没有人还有其他事项想要讨论？</span></span><button class="listen-btn no-audio" id="btn-close_aob2" data-tts="Does anyone have any other business they would like to discuss?"><div class="play-tri"></div>Listen</button></div></li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Summarising the discussion</span></div>
+      <ul>
+        <li>
+          <div class="li-top"><span class="li-text">To summarise, we've agreed to …
+            <span class="zh">总结一下，我们同意……</span></span><button class="listen-btn no-audio" id="btn-close_sum1" data-tts="To summarise, we've agreed to launch the pilot scheme in Store A starting next month."><div class="play-tri"></div>Listen</button></div>
+          <button class="see-ex-btn" onclick="toggleEx(this)">See example <span class="arr">▾</span></button>
+          <div class="ex-box"><div class="ex-lbl">Example
+              <button class="listen-btn" id="btn-ex_t7_1" data-tts="To summarise, we've agreed to launch the pilot scheme in Store A starting next month."><div class="play-tri"></div>Listen</button></div>To summarise, we've agreed to launch the pilot scheme in Store A starting next month.<br><span class="zh">总结一下，我们同意从下个月开始在A店启动试点计划。</span></div>
+        </li>
+        <li><div class="li-top"><span class="li-text">Let me run through the main points we've agreed on.
+            <span class="zh">让我梳理一下我们达成一致的主要要点。</span></span><button class="listen-btn no-audio" id="btn-close_sum2" data-tts="Let me run through the main points we've agreed on."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">So, to conclude, we've agreed that …
+            <span class="zh">那么，总之，我们同意……</span></span><button class="listen-btn no-audio" id="btn-close_sum3" data-tts="So, to conclude, we've agreed that the new measures will be implemented next quarter."><div class="play-tri"></div>Listen</button></div></li>
+      </ul>
+    </div>
+    <div class="strategy">
+      <div class="strategy-title"><span class="stag">Thanking everyone for their participation</span></div>
+      <ul>
+        <li><div class="li-top"><span class="li-text">I think we've had a very productive meeting today and covered a lot of ground. Thank you so much for your input.
+            <span class="zh">我认为我们今天开了一个非常富有成效的会议，涵盖了很多内容。非常感谢大家的意见。</span></span><button class="listen-btn no-audio" id="btn-close_t1" data-tts="I think we've had a very productive meeting today and covered a lot of ground. Thank you so much for your input."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">We've had a very fruitful meeting today and discussed a lot of issues. I would like to say thank you for your participation.
+            <span class="zh">我们今天开了一个非常富有成效的会议，讨论了很多问题。我想对大家的参与表示感谢。</span></span><button class="listen-btn no-audio" id="btn-close_t2" data-tts="We've had a very fruitful meeting today and discussed a lot of issues. I would like to say thank you for your participation."><div class="play-tri"></div>Listen</button></div></li>
+        <li><div class="li-top"><span class="li-text">This has been an extremely effective meeting today, everybody. Thank you very much for all your suggestions.
+            <span class="zh">今天这次会议非常高效。非常感谢大家的所有建议。</span></span><button class="listen-btn no-audio" id="btn-close_t3" data-tts="This has been an extremely effective meeting today, everybody. Thank you very much for all your suggestions."><div class="play-tri"></div>Listen</button></div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="example-block">
+    <div class="example-lbl"><svg width="12" height="12" viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11" fill="#1050a0"/></svg> Example for closing a meeting</div>
+    <div class="example-text">
+      <p><span class="spk">A / B / C / D:</span> Well, I think that's all we have time for today. We have some really promising ideas to take to management. Does anybody have anything else to contribute?</p>
+      <p style="margin-top:8px"><span class="spk">All:</span> No. / I don't. / Not right now.</p>
+      <p style="margin-top:8px"><span class="spk">A / B / C / D:</span> Well, if nobody has anything else to add, I think we can finish here. Thank you very much for attending the meeting and making contributions, everybody.</p>
+      <span class="zh-ex"><span class="spk">A / B / C / D:</span> 好了，我想今天的时间就到这里。我们有一些非常有前景的想法可以提交给管理层。还有人要补充吗？<br><span class="spk">All:</span> 没有了。/ 我没有。/ 现在没有。<br><span class="spk">A / B / C / D:</span> 好吧，如果没有人要补充了，我想我们可以到此结束。非常感谢大家参加会议并做出贡献。</span></div>
+    <div class="example-listen-row"><button class="listen-btn no-audio" id="btn-close_ex" data-tts="Well, I think that's all we have time for today. We have some really promising ideas to take to management. Does anybody have anything else to contribute? Well, if nobody has anything else to add, I think we can finish here. Thank you very much for attending the meeting and making contributions, everybody."><div class="play-tri"></div>Listen to full example</button></div>
+  </div>
+</div>
+</div>
+
+</div><!-- end .wrap -->
+
+<!-- NOW PLAYING BAR -->
+<div id="np-bar">
+  <div class="np-dot"></div>
+  <div id="np-text"><div id="np-sub">Now playing</div><div id="np-sent"></div></div>
+  <button id="stop-btn" onclick="stopAudio()">&#9632; Stop</button>
+</div>
+
+<script>
+// ── AUDIO DATA — Python script fills these nulls with base64 strings ──────
+const AUDIO_KEYS = new Set(["meet_w1","meet_w2","meet_a1","meet_a2","meet_inv1","meet_inv2","meet_inv3","meet_exp1","meet_exp2","meet_exp3","meet_ex","sug_f1","sug_f2","sug_f3","sug_f4","sug_f5","sug_t1","sug_t2","sug_t3","sug_t4","sug_t5","sug_t6","sug_t7","sug_t8","sug_t9","sug_t10","resp_a1","resp_a2","resp_a3","resp_a4","resp_a5","resp_a6","resp_a7","resp_a8","resp_p1","resp_p2","resp_p3","resp_d1","resp_d2","resp_d3","resp_d4","resp_d5","resp_d6","int_i1","int_i2","int_c1","int_c2","int_e1","int_e2","int_e3","int_e4","pref1","pref2","pref3","pref4","eval1","eval2","eval3","eval4","cg1","cg2","cg3","cg4","ack1","ack2","ack3","comp1","comp2","rev1","rev2","rev3","rev4","close_e1","close_e2","close_e3","close_aob1","close_aob2","close_sum1","close_sum2","close_sum3","close_t1","close_t2","close_t3","close_ex","meet_p1","meet_p2","meet_p3","meet_s1","meet_s2","meet_s3","ex_p1","ex_p2","ex_p3","ex_s1","ex_s2","ex_s3","resp_ex","ex_f1","ex_f2","ex_f3","ex_f4","ex_f5","ex_t1","ex_t2","ex_t3","ex_t4","ex_t5","ex_t6","ex_t7","ex_t8","ex_t9","ex_t10","ex_t3_1","ex_t3_2","ex_t3_3","ex_t3_4","ex_t4_1","ex_t4_2","ex_t5_1","ex_t5_2","ex_t5_3","ex_t5_4","ex_t5_5","ex_t5_6","ex_t5_7","ex_t5_8","ex_t6_1","ex_t6_2","ex_t6_3","ex_t6_4","ex_t7_1"]);
+// Audio files live in the audio/ folder. Path: audio/<key>.mp3
+// (Manifest: audio_manifest.json)
+
+
+// ── WORD CLICK TTS ────────────────────────────────────────────────────────
+let selectedVoice = null;
+
+function loadVoice() {
+  if (selectedVoice) return;
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = ['Samantha','Karen','Moira','Tessa','Victoria','Zoe','Google US English','Microsoft Zira Online (Natural) - English (United States)','Microsoft Zira','Microsoft Jenny Online (Natural) - English (United States)','Microsoft Jenny'];
+  for (const name of preferred) {
+    const v = voices.find(v => v.name === name);
+    if (v) { selectedVoice = v; break; }
+  }
+  if (!selectedVoice) {
+    selectedVoice = voices.find(v => v.lang.startsWith('en') && /female|woman|zira|samantha|karen/i.test(v.name))
+      || voices.find(v => v.lang === 'en-US')
+      || voices.find(v => v.lang.startsWith('en'))
+      || voices[0];
+  }
+}
+window.speechSynthesis.onvoiceschanged = loadVoice;
+loadVoice();
+
+function speakWord(word) {
+  if (!word) return;
+  window.speechSynthesis.cancel();
+  loadVoice();
+  const utter = new SpeechSynthesisUtterance(word);
+  if (selectedVoice) utter.voice = selectedVoice;
+  utter.lang = 'en-US';
+  utter.pitch = 1.0;
+  utter.rate = 0.7;
+  utter.volume = 1;
+  window.speechSynthesis.speak(utter);
+}
+
+// ── WORD READER VISUALIZER ────────────────────────────────────────────────
+let wordAnimFrame = null;
+
+function showWordReader(btn, text) {
+  const container = btn.closest('li') || btn.closest('.ex-box') || btn.closest('.example-block') || btn.parentElement;
+  const old = container.querySelector('.tts-reader');
+  if (old) old.remove();
+
+  const reader = document.createElement('div');
+  reader.className = 'tts-reader';
+  const wordSpans = [];
+  const wordList = text.match(/\S+\s*/g) || [];
+  wordList.forEach(function(w) {
+    const span = document.createElement('span');
+    span.className = 'tts-word';
+    span.textContent = w;
+    span.onclick = function(e) {
+      e.stopPropagation();
+      speakWord(this.textContent.trim());
+    };
+    reader.appendChild(span);
+    wordSpans.push(span);
+  });
+  container.appendChild(reader);
+
+  const totalChars = text.length;
+  const estDuration = Math.max(totalChars / 10, 1);
+
+  function animateWords() {
+    if (!curAudio || curAudio.paused || curAudio.ended) {
+      wordSpans.forEach(function(s) { s.classList.remove('current'); });
+      wordAnimFrame = null;
+      return;
+    }
+    const elapsed = curAudio.currentTime;
+    const dur = curAudio.duration || estDuration;
+    const progress = Math.min(elapsed / dur, 0.999);
+    const targetChar = Math.floor(progress * totalChars);
+    let pos = 0;
+    let found = false;
+    for (let i = 0; i < wordSpans.length; i++) {
+      const w = wordSpans[i].textContent.trim();
+      const end = pos + w.length;
+      if (targetChar >= pos && targetChar < end) {
+        wordSpans.forEach(function(s) { s.classList.remove('current'); });
+        wordSpans[i].classList.add('current');
+        found = true;
+        break;
+      }
+      pos += w.length + 1;
+    }
+    if (!found) wordSpans.forEach(function(s) { s.classList.remove('current'); });
+    wordAnimFrame = requestAnimationFrame(animateWords);
+  }
+  wordAnimFrame = requestAnimationFrame(animateWords);
+}
+
+function hideWordReader() {
+  if (wordAnimFrame) { cancelAnimationFrame(wordAnimFrame); wordAnimFrame = null; }
+  document.querySelectorAll('.tts-reader').forEach(function(r) { r.remove(); });
+}
+
+// ── PLAYBACK ──────────────────────────────────────────────────────────────
+let curAudio=null, curBtn=null;
+
+function playAudio(id, btn){
+  stopAudio();
+  const audio = new Audio('audio/'+id+'.mp3');
+  curAudio=audio; curBtn=btn;
+  btn.classList.add('playing');
+  document.getElementById('np-sent').textContent = btn.dataset.tts||'';
+  document.getElementById('np-bar').classList.add('vis');
+  if (btn.dataset.tts) showWordReader(btn, btn.dataset.tts);
+  audio.play().catch(e=>console.warn(e));
+  audio.onended=function() {
+    btn.classList.remove('playing');
+    document.getElementById('np-bar').classList.remove('vis');
+    curAudio=null; curBtn=null;
+    hideWordReader();
+  };
+}
+
+function stopAudio(){
+  if(curAudio){curAudio.pause();curAudio.currentTime=0;}
+  if(curBtn) curBtn.classList.remove('playing');
+  document.getElementById('np-bar').classList.remove('vis');
+  curAudio=null; curBtn=null;
+  hideWordReader();
+}
+
+// ── SEE EXAMPLE TOGGLE ────────────────────────────────────────────────────
+function toggleEx(btn){
+  const box = btn.nextElementSibling;
+  const open = box.classList.toggle('vis');
+  btn.classList.toggle('open', open);
+}
+
+// ── WIRE UP LISTEN BUTTONS ────────────────────────────────────────────────
+document.querySelectorAll('.listen-btn').forEach(btn=>{
+  const id = btn.id.replace('btn-','');
+  if(AUDIO_KEYS.has(id)){
+    btn.addEventListener('click',()=>playAudio(id,btn));
+  }
+});
+
+function showTab(num){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-panel-'+num).classList.add('active');
+  document.getElementById('tab-btn-'+num).classList.add('active');
+  stopAudio();
+}
+
+</script>
+</body>
+</html>
