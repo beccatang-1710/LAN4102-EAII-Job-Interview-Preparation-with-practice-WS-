@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAN4102 – AI Job Interview Coach | Student User Guide</title>
+  <!-- Chinese: LAN4102 – AI 求职面试教练 | 学生用户指南 -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink-light: #fde8ef; --pink-mid: #f9c8d9; --pink-deep: #e8849e;
+      --pink-accent: #d4547a; --green-leaf: #6aab6e; --green-dark: #3d7a42;
+      --cream: #fff8f0; --text-dark: #3a2030; --text-mid: #5c3a4a;
+    }
+    body {
+      font-family: "Nunito", sans-serif;
+      background-color: var(--pink-light);
+      color: var(--text-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cellipse cx='30' cy='30' rx='14' ry='8' fill='%23f2a4bb' opacity='.35' transform='rotate(-30 30 30)'/%3E%3Cellipse cx='60' cy='15' rx='10' ry='6' fill='%23e8849e' opacity='.25' transform='rotate(15 60 15)'/%3E%3Ccircle cx='45' cy='45' r='5' fill='%23e8849e' opacity='.3'/%3E%3Ccircle cx='46' cy='43' r='3' fill='%23fff0f5' opacity='.5'/%3E%3Cellipse cx='160' cy='40' rx='14' ry='8' fill='%23f2a4bb' opacity='.3' transform='rotate(25 160 40)'/%3E%3Ccircle cx='155' cy='55' r='5' fill='%23d4547a' opacity='.3'/%3E%3Cpath d='M100 90 Q108 75 115 90 Q108 105 100 90Z' fill='%236aab6e' opacity='.25'/%3E%3Cpath d='M100 90 Q92 75 85 90 Q92 105 100 90Z' fill='%236aab6e' opacity='.2'/%3E%3Cpath d='M20 110 Q28 95 35 110 Q28 125 20 110Z' fill='%233d7a42' opacity='.2'/%3E%3Cpath d='M150 120 Q160 105 168 120 Q160 135 150 120Z' fill='%236aab6e' opacity='.22'/%3E%3Cpath d='M5 170 Q14 155 22 170 Q14 185 5 170Z' fill='%236aab6e' opacity='.2'/%3E%3Cpath d='M180 10 Q188 -5 196 10 Q188 25 180 10Z' fill='%233d7a42' opacity='.18'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+    }
+    .page-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 20px 60px; }
+
+    /* BANNER */
+    .banner { width: 100%; border-radius: 0 0 28px 28px; overflow: hidden; box-shadow: 0 8px 32px rgba(180,80,110,.22); margin-bottom: 38px; position: relative; }
+    .banner img { display: block; width: 100%; height: auto; }
+    .banner-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(212,84,122,.92) 0%, rgba(212,84,122,.5) 70%, transparent 100%);
+      padding: 36px 28px 18px;
+    }
+    .banner-label h1 { font-family: "Playfair Display", serif; font-size: clamp(1.375rem,1.8vw,1.55rem); color: #fff; font-weight: 700; margin-bottom: 3px; white-space: nowrap; letter-spacing: -0.005em; text-align: center; }
+    .banner-label p  { font-family: "Nunito", sans-serif; font-size: clamp(.8rem,1.8vw,1rem); color: rgba(255,255,255,.92); }
+
+    /* CARD */
+    .card { background: rgba(255,248,240,.88); border: 2px solid var(--pink-mid); border-radius: 20px; padding: 32px 36px; margin-bottom: 28px; box-shadow: 0 4px 18px rgba(212,84,122,.1); backdrop-filter: blur(6px); }
+    .guide-title { font-family: "Playfair Display", serif; font-size: clamp(1.6rem,4vw,2.2rem); color: var(--pink-accent); text-align: center; margin-bottom: 6px; }
+    .guide-subtitle { text-align: center; color: var(--text-mid); font-size: 1rem; margin-bottom: 22px; }
+    .divider { border: none; border-top: 2px dashed var(--pink-mid); margin: 18px 0; }
+    .welcome-text { font-size: 1rem; line-height: 1.7; color: var(--text-mid); }
+
+    .step-heading { font-family: "Playfair Display", serif; font-size: 1.25rem; color: var(--pink-accent); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .step-heading .badge { background: var(--pink-accent); color: #fff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-family: "Nunito", sans-serif; font-size: .9rem; font-weight: 800; flex-shrink: 0; }
+
+    .platform-block { background: var(--pink-light); border-left: 4px solid var(--pink-deep); border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; }
+    .platform-block strong { color: var(--pink-accent); }
+    ol.guide-ol { padding-left: 22px; }
+    ol.guide-ol li { margin-bottom: 8px; line-height: 1.65; color: var(--text-mid); font-size: .97rem; }
+
+    .cta-link { display: inline-block; background: linear-gradient(135deg, var(--pink-accent), #c03b66); color: #fff !important; text-decoration: none; font-weight: 700; padding: 12px 28px; border-radius: 50px; font-size: 1rem; box-shadow: 0 4px 16px rgba(212,84,122,.35); transition: transform .15s, box-shadow .15s; margin: 10px 0; }
+    .cta-link:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(212,84,122,.45); }
+
+    .note-box { background: #fff3cd; border: 1.5px solid #e8b86d; border-radius: 12px; padding: 14px 18px; margin: 14px 0; font-size: .93rem; color: #6b4c12; }
+
+    .voice-steps { display: flex; flex-direction: column; gap: 10px; }
+    .voice-step { display: flex; align-items: flex-start; gap: 14px; background: var(--pink-light); border-radius: 12px; padding: 12px 16px; }
+    .voice-step .icon { font-size: 1.6rem; flex-shrink: 0; }
+    .voice-step p { font-size: .95rem; color: var(--text-mid); line-height: 1.55; }
+    .voice-step strong { color: var(--text-dark); }
+
+    .flow-timeline { position: relative; padding-left: 36px; }
+    .flow-timeline::before { content: ""; position: absolute; left: 12px; top: 6px; bottom: 6px; width: 3px; background: linear-gradient(to bottom, var(--pink-deep), var(--pink-mid)); border-radius: 2px; }
+    .flow-item { position: relative; margin-bottom: 18px; }
+    .flow-item::before { content: ""; position: absolute; left: -30px; top: 5px; width: 14px; height: 14px; background: var(--pink-accent); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 2px var(--pink-deep); }
+    .flow-item h4 { color: var(--pink-accent); font-size: .95rem; margin-bottom: 4px; }
+    .flow-item p  { font-size: .93rem; color: var(--text-mid); line-height: 1.6; }
+    .flow-item em { color: var(--pink-accent); font-style: italic; }
+
+    .q-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .q-table th { background: var(--pink-deep); color: #fff; padding: 10px 14px; text-align: left; font-weight: 700; }
+    .q-table th:first-child { border-radius: 10px 0 0 0; }
+    .q-table th:last-child  { border-radius: 0 10px 0 0; }
+    .q-table td { padding: 10px 14px; vertical-align: top; border-bottom: 1px solid var(--pink-mid); color: var(--text-mid); line-height: 1.6; }
+    .q-table tr:nth-child(even) td { background: rgba(249,200,217,.18); }
+    .q-table ul { padding-left: 16px; }
+    .q-table li { margin-bottom: 5px; }
+
+    /* FLOW CHART */
+    .flow-chart {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+      margin: 20px 0 6px;
+      padding: 16px 10px;
+      background: linear-gradient(135deg, #fff5fa 0%, #fde8ef 100%);
+      border: 2px dashed var(--pink-mid);
+      border-radius: 18px;
+    }
+    .flow-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+    }
+    .flow-step .step-num {
+      background: linear-gradient(135deg, var(--pink-accent), #c03b66);
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .9rem;
+      margin-bottom: 8px;
+      box-shadow: 0 3px 8px rgba(212,84,122,.4);
+      border: 2px solid #fff;
+    }
+    .flow-step img {
+      width: 100%;
+      max-width: 165px;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 12px rgba(212,84,122,.22);
+      display: block;
+    }
+    .flow-step .caption {
+      font-size: .78rem;
+      color: var(--text-mid);
+      text-align: center;
+      margin-top: 8px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--pink-deep);
+      font-size: 1.5rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      align-self: center;
+      margin-top: 40px;
+    }
+    .flow-chart-title {
+      text-align: center;
+      color: var(--pink-accent);
+      font-weight: 800;
+      font-size: 1rem;
+      margin: 18px 0 4px;
+    }
+    .flow-chart-sub {
+      text-align: center;
+      color: var(--text-mid);
+      font-size: .82rem;
+      margin-bottom: 6px;
+    }
+
+    /* TABS */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      margin: 0 0 24px;
+      background: rgba(255,248,240,.7);
+      padding: 8px;
+      border-radius: 50px;
+      border: 2px solid var(--pink-mid);
+      box-shadow: 0 4px 14px rgba(212,84,122,.12);
+      position: relative;
+      z-index: 2;
+    }
+    .tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 40px;
+      font-family: "Nunito", sans-serif;
+      font-size: clamp(.82rem, 1.8vw, .98rem);
+      font-weight: 700;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      line-height: 1.25;
+    }
+    .tab-btn .tab-sub {
+      font-size: .72rem;
+      font-weight: 600;
+      opacity: .85;
+    }
+    .tab-btn:hover { color: var(--pink-accent); background: rgba(253,232,239,.6); }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--pink-accent), #c03b66);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(212,84,122,.35);
+    }
+    .tab-panel { display: none; animation: tabFadeIn .35s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TAB 2 — COACH BEHAVIOUR */
+    .role-box {
+      background: linear-gradient(135deg, #e8f5e9 0%, #d4ead4 100%);
+      border-left: 4px solid #6aab6e;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 8px 0 22px;
+      font-size: .95rem;
+      line-height: 1.65;
+      color: #2e5d31;
+    }
+    .role-box .role-title {
+      color: #3d7a42;
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .role-box .role-zh {
+      font-size: .88rem;
+      color: #4a7d4e;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+    .quote-box {
+      background: rgba(212,84,122,.08);
+      border-left: 3px solid var(--pink-accent);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-style: italic;
+      color: var(--text-dark);
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+    .voice-style-box {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0 22px;
+    }
+    .voice-style-item {
+      background: var(--cream);
+      border-left: 4px solid var(--pink-deep);
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+    .voice-style-item .vs-title {
+      color: var(--pink-accent);
+      display: block;
+      font-size: .98rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .voice-style-item p {
+      font-size: .9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .voice-style-item .vs-zh {
+      font-size: .85rem;
+      color: var(--text-mid);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+    .language-constraint {
+      background: linear-gradient(135deg, #fde8ef 0%, #f9c8d9 100%);
+      border: 1.5px solid var(--pink-deep);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin: 10px 0 16px;
+      font-size: .92rem;
+      color: var(--pink-accent);
+      line-height: 1.6;
+    }
+    .language-constraint strong { color: #c03b66; }
+    .feedback-rules {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      counter-reset: fbr;
+    }
+    .feedback-rules li {
+      background: linear-gradient(135deg, #fff8f0 0%, #fff3cd 100%);
+      border-left: 4px solid #e8b86d;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: .92rem;
+      line-height: 1.65;
+      color: var(--text-mid);
+    }
+    .feedback-rules li .fr-title {
+      color: #6b4c12;
+      display: block;
+      font-size: .98rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .feedback-rules li em {
+      color: #8a6418;
+      font-style: normal;
+      display: block;
+      margin-top: 4px;
+      font-size: .88rem;
+    }
+
+    /* QUESTION BANK — LISTEN BUTTONS */
+    .q-question-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+    .q-en { flex: 1; }
+    .q-listen-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 50%;
+      background: var(--pink-light);
+      border: 1.5px solid var(--pink-mid);
+      color: var(--pink-accent);
+      cursor: pointer;
+      font-size: .8rem;
+      line-height: 1;
+      padding: 0;
+      margin-top: 1px;
+      transition: all .15s;
+      flex-shrink: 0;
+    }
+    .q-listen-btn:hover {
+      background: var(--pink-accent);
+      color: #fff;
+      border-color: var(--pink-accent);
+      transform: scale(1.1);
+    }
+    .q-listen-btn:active { transform: scale(.95); }
+    .q-listen-btn.playing {
+      background: var(--pink-accent);
+      color: #fff;
+      border-color: var(--pink-accent);
+      animation: qPulse 1s ease-in-out infinite;
+    }
+    .q-listen-btn.unsupported { display: none; }
+    @keyframes qPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,84,122,.55); }
+      50%      { box-shadow: 0 0 0 7px rgba(212,84,122,0); }
+    }
+
+    /* DOWNLOAD TAB */
+    .download-tab {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #fde8ef 0%, #f9c8d9 100%);
+      border: 2px solid var(--pink-deep);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 4px 0 18px;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: transform .2s, box-shadow .2s, background .2s;
+      cursor: pointer;
+    }
+    .download-tab:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,84,122,.28);
+      background: linear-gradient(135deg, #f9c8d9 0%, #e8849e 100%);
+    }
+    .download-tab:hover .download-arrow { transform: translateY(3px); }
+    .download-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      background: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(212,84,122,.18);
+    }
+    .download-info { flex: 1; min-width: 0; }
+    .download-title {
+      font-weight: 800;
+      color: var(--pink-accent);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      margin-bottom: 2px;
+    }
+    .download-sub {
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.4;
+    }
+    .download-arrow {
+      font-size: 1.5rem;
+      color: var(--pink-accent);
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+
+    @media (max-width:600px) {
+      .card { padding: 22px 18px; }
+      .q-table { font-size: .82rem; }
+      .flow-chart { flex-wrap: wrap; gap: 14px 10px; justify-content: center; padding: 14px 8px; }
+      .flow-step { flex: 0 0 calc(45% - 8px); }
+      .flow-arrow { display: none; }
+      .tabs-nav { flex-direction: column; border-radius: 18px; gap: 6px; }
+      .tab-btn { border-radius: 12px; padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner">
+  <img src="banner.jpg" alt="AI Interview Coach Banner" />
+  <div class="banner-label">
+    <h1>Student User Guide for AI Interview Coach (LAN4102 EAII Preparation)</h1>
+    <p style="font-size:clamp(1rem,2vw,1.2rem);opacity:.9;margin-top:6px;font-style:italic;text-align:center;">Presented by Rebecca Tang</p>
+  </div>
+</div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- TABS NAV -->
+  <div class="tabs-nav" role="tablist">
+    <button class="tab-btn active" data-tab="setup" role="tab" aria-selected="true">
+      🛠️ Setup
+      <span class="tab-sub">设置</span>
+    </button>
+    <button class="tab-btn" data-tab="interview" role="tab" aria-selected="false">
+      📋 Interview Flow &amp; Q&amp;A
+      <span class="tab-sub">面试流程与题库</span>
+    </button>
+  </div>
+
+  <!-- TAB 1: SETUP & PRACTICE -->
+  <div class="tab-panel active" data-panel="setup">
+
+  <!-- Floral border -->
+  <div class="floral-border" aria-hidden="true">
+    <svg viewBox="0 0 1200 90" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+      <defs>
+        <g id="rose-big">
+          <circle cx="0" cy="0" r="16" fill="#e8849e"/>
+          <circle cx="-9" cy="-6" r="10" fill="#f9c8d9"/>
+          <circle cx="9" cy="-6" r="10" fill="#f9c8d9"/>
+          <circle cx="0" cy="-11" r="10" fill="#fde8ef"/>
+          <circle cx="0" cy="0" r="6" fill="#d4547a"/>
+          <circle cx="-2" cy="-1" r="2.5" fill="#fff8f0"/>
+        </g>
+        <g id="rose-mid">
+          <circle cx="0" cy="0" r="11" fill="#f2a4bb"/>
+          <circle cx="-6" cy="-4" r="7" fill="#fde8ef"/>
+          <circle cx="6" cy="-4" r="7" fill="#fde8ef"/>
+          <circle cx="0" cy="0" r="4" fill="#d4547a"/>
+        </g>
+        <g id="rose-small">
+          <circle cx="0" cy="0" r="7" fill="#f9c8d9"/>
+          <circle cx="0" cy="0" r="3" fill="#e8849e"/>
+        </g>
+        <g id="bud">
+          <ellipse cx="0" cy="0" rx="5" ry="3" fill="#d4547a"/>
+        </g>
+        <g id="leaf">
+          <ellipse cx="0" cy="0" rx="14" ry="5" fill="#6aab6e" transform="rotate(-25)"/>
+          <ellipse cx="0" cy="0" rx="11" ry="3.5" fill="#3d7a42" transform="rotate(-25)" opacity=".35"/>
+        </g>
+        <g id="leaf-sm">
+          <ellipse cx="0" cy="0" rx="9" ry="3.5" fill="#6aab6e" transform="rotate(20)"/>
+        </g>
+      </defs>
+      <!-- Cluster 1 -->
+      <g transform="translate(70,45)">
+        <use href="#leaf" x="-25" y="10" transform="rotate(-15 -25 10)"/>
+        <use href="#rose-big"/>
+        <use href="#rose-small" x="22" y="-12"/>
+        <use href="#leaf-sm" x="20" y="14" transform="rotate(30 20 14)"/>
+        <use href="#bud" x="-22" y="-15"/>
+      </g>
+      <!-- Cluster 2 -->
+      <g transform="translate(260,55)">
+        <use href="#leaf" x="20" y="-8" transform="rotate(40 20 -8)"/>
+        <use href="#rose-mid"/>
+        <use href="#rose-small" x="-18" y="10"/>
+        <use href="#leaf-sm" x="15" y="15" transform="rotate(20 15 15)"/>
+      </g>
+      <!-- Cluster 3 (center) -->
+      <g transform="translate(450,42)">
+        <use href="#leaf" x="-30" y="8" transform="rotate(-20 -30 8)"/>
+        <use href="#leaf" x="28" y="-5" transform="rotate(50 28 -5)"/>
+        <use href="#rose-big"/>
+        <use href="#rose-mid" x="26" y="-8"/>
+        <use href="#rose-small" x="-22" y="14"/>
+        <use href="#bud" x="-26" y="-12"/>
+      </g>
+      <!-- Cluster 4 -->
+      <g transform="translate(640,52)">
+        <use href="#leaf" x="22" y="-10" transform="rotate(35 22 -10)"/>
+        <use href="#rose-mid"/>
+        <use href="#rose-small" x="-20" y="-10"/>
+        <use href="#leaf-sm" x="-15" y="15" transform="rotate(-30 -15 15)"/>
+        <use href="#bud" x="20" y="12"/>
+      </g>
+      <!-- Cluster 5 -->
+      <g transform="translate(830,44)">
+        <use href="#leaf" x="-28" y="10" transform="rotate(-15 -28 10)"/>
+        <use href="#rose-big"/>
+        <use href="#rose-mid" x="24" y="10"/>
+        <use href="#rose-small" x="-22" y="-12"/>
+        <use href="#leaf-sm" x="22" y="-14" transform="rotate(40 22 -14)"/>
+        <use href="#bud" x="0" y="20"/>
+      </g>
+      <!-- Cluster 6 -->
+      <g transform="translate(1010,56)">
+        <use href="#leaf" x="18" y="-8" transform="rotate(40 18 -8)"/>
+        <use href="#rose-mid"/>
+        <use href="#rose-small" x="-18" y="8"/>
+        <use href="#leaf-sm" x="20" y="12" transform="rotate(20 20 12)"/>
+      </g>
+      <!-- Cluster 7 -->
+      <g transform="translate(1150,46)">
+        <use href="#leaf" x="-22" y="8" transform="rotate(-20 -22 8)"/>
+        <use href="#rose-big" transform="scale(.85)"/>
+        <use href="#rose-small" x="20" y="-10"/>
+        <use href="#bud" x="-20" y="-12"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Welcome -->
+  <div class="card" style="padding-top:14px;">
+    <p class="welcome-text">
+      Welcome to your <strong>AI Interview Coach</strong>! This Gem is specifically customised to conduct a professional mock interview and provide structured feedback to prepare you for the coming <strong>EAII job interview task</strong>. Follow the steps below to set up and practise on your mobile phone.
+    </p>
+    <p class="welcome-text" style="margin-top:8px;">
+      欢迎使用您的 <strong>AI 面试教练</strong>！本应用专门定制用于进行专业的模拟面试，并提供结构化的反馈，帮助您为即将到来的 <strong>EAII 求职面试任务</strong>做好准备。请按照以下步骤在您的手机上设置并练习。
+    </p>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="card">
+    <h2 class="step-heading"><span class="badge">1</span>📱 Install the Gemini App on Your Device</h2>
+    <p style="color:var(--pink-accent);font-size:.85rem;font-weight:600;margin:-10px 0 14px 42px;">📱 在您的设备上安装 Gemini 应用</p>
+    <p style="color:var(--text-mid);margin-bottom:14px;font-size:.96rem;">To use the live voice conversation features, you <strong>must</strong> use the official mobile app for your specific phone:</p>
+    <p style="color:var(--text-mid);margin-bottom:14px;font-size:.9rem;">要使用实时语音对话功能，您<strong>必须</strong>使用适用于您手机的官方移动应用：</p>
+    <div class="platform-block">
+      <strong>🍏 iPhone Users</strong>
+      <p style="color:var(--text-mid);font-size:.85rem;margin:-4px 0 6px 0;">🍏 iPhone 用户</p>
+      <ol class="guide-ol" style="margin-top:8px;">
+        <li>Open the <strong>App Store</strong> and search for <em>Google Gemini</em>.<br><span style="font-size:.85rem;color:var(--text-mid);">打开 <strong>App Store</strong> 并搜索 <em>Google Gemini</em>。</span></li>
+        <li>Download the standalone <strong>Google Gemini</strong> app (do not use the standard Google search app).<br><span style="font-size:.85rem;color:var(--text-mid);">下载独立的 <strong>Google Gemini</strong> 应用（不要使用标准的 Google 搜索应用）。</span></li>
+        <li>Sign in using your Google account.<br><span style="font-size:.85rem;color:var(--text-mid);">使用您的 Google 账户登录。</span></li>
+      </ol>
+    </div>
+    <div class="platform-block">
+      <strong>🤖 Android Users</strong>
+      <p style="color:var(--text-mid);font-size:.85rem;margin:-4px 0 6px 0;">🤖 Android 用户</p>
+      <ol class="guide-ol" style="margin-top:8px;">
+        <li>Open the <strong>Google Play Store</strong> and download the <em>Google Gemini</em> app.<br><span style="font-size:.85rem;color:var(--text-mid);">打开 <strong>Google Play 商店</strong>并下载 <em>Google Gemini</em> 应用。</span></li>
+        <li>Sign in using your Google account.<br><span style="font-size:.85rem;color:var(--text-mid);">使用您的 Google 账户登录。</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="card">
+    <h2 class="step-heading"><span class="badge">2</span>🔗 Add the Coach to Your Account</h2>
+    <p style="color:var(--pink-accent);font-size:.85rem;font-weight:600;margin:-10px 0 14px 42px;">🔗 将教练添加到您的账户</p>
+    <p style="color:var(--text-mid);margin-bottom:12px;font-size:.96rem;">On your mobile phone, click the link below to open your coach:</p>
+    <p style="color:var(--text-mid);margin-bottom:12px;font-size:.9rem;">在您的手机上，点击以下链接打开您的教练：</p>
+    <div style="text-align:center;margin:16px 0;">
+      <a class="cta-link" href="https://gemini.google.com/gem/1gyQIwyQC6IKCWDr3jOg_XDVsX0zaOOI1?usp=sharing" target="_blank" rel="noopener">
+        👉 Open LAN4102_EAII Job Interview Coach
+      </a>
+    </div>
+    <p style="text-align:center;font-size:.9rem;color:var(--pink-accent);">👉 打开 LAN4102 EAII 求职面试教练</p>
+    <p style="color:var(--text-mid);font-size:.96rem;margin-bottom:8px;">The link will open the Coach page in your phone&#39;s web browser.</p>
+    <p style="color:var(--text-mid);font-size:.9rem;margin-bottom:8px;">该链接将在您手机的网络浏览器中打开教练页面。</p>
+    <p style="color:var(--text-mid);font-size:.96rem;"><strong>Crucial Action:</strong> Type <code style="background:#fde8ef;padding:2px 6px;border-radius:4px;color:#c03b66;">"Hi"</code> and send this first message.</p>
+    <p style="color:var(--text-mid);font-size:.9rem;"><strong>关键操作：</strong>输入 <code style="background:#fde8ef;padding:2px 6px;border-radius:4px;color:#c03b66;">"Hi"</code> 并发送此第一条消息。</p>
+    <div class="note-box">
+      ⚠️ <strong>Note:</strong> Sending that first message is what permanently "saves" the shared Coach to your Gemini account. Once you do this, it will officially show up inside your mobile app!
+    </div>
+    <p style="font-size:.88rem;color:#6b4c12;margin:-8px 0 14px 0;background:#fff3cd;border-radius:12px;padding:12px 18px;">⚠️ <strong>注意：</strong>发送该第一条消息将把共享的教练永久"保存"到您的 Gemini 账户。一旦您这样做，它将正式显示在您的移动应用中！</p>
+
+    <div style="text-align:center;margin:6px 0 18px;">
+      <img src="screen.jpg" alt="LAN4102_EAII Job Interview Coach Gem interface" style="max-width:100%;height:auto;border-radius:14px;border:2px solid var(--pink-mid);box-shadow:0 4px 14px rgba(212,84,122,.18);" />
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="card">
+    <h2 class="step-heading"><span class="badge">3</span>🎙️ Start Your Voice Practice</h2>
+    <p style="color:var(--pink-accent);font-size:.85rem;font-weight:600;margin:-10px 0 14px 42px;">🎙️ 开始您的语音练习</p>
+    <div class="voice-steps">
+      <div class="voice-step"><div class="icon">📲</div><p>Open your downloaded <strong>Google Gemini Mobile App</strong>.<br><span style="font-size:.85rem;color:var(--text-mid);">打开您已下载的 <strong>Google Gemini 移动应用</strong>。</span></p></div>
+      <div class="voice-step"><div class="icon">☰</div><p>Tap the <strong>Menu (three horizontal lines)</strong> in the top-left corner.<br><span style="font-size:.85rem;color:var(--text-mid);">点击左上角的<strong>菜单（三条横线）</strong>。</span></p></div>
+      <div class="voice-step"><div class="icon">💎</div><p>Look under your list of Gems and tap <strong>LAN4102_EAII Job Interview Coach</strong>.<br><span style="font-size:.85rem;color:var(--text-mid);">在您的应用列表中找到并点击 <strong>LAN4102 EAII 求职面试教练</strong>。</span></p></div>
+      <div class="voice-step"><div class="icon">🔊</div><p><strong>To Listen to Responses:</strong> Tap the <strong>Speaker icon</strong> next to any text the AI sends you.<br><span style="font-size:.85rem;color:var(--text-mid);"><strong>听取回复：</strong>点击 AI 发送的文字旁边的<strong>扬声器图标</strong>。</span></p></div>
+      <div class="voice-step"><div class="icon">🌊</div><p><strong>For Live Spoken Practice (Recommended):</strong> Tap the <strong>Gemini Live waveform icon</strong> in the bottom-right corner next to the chat box. This starts a real-time, hands-free spoken conversation.<br><span style="font-size:.85rem;color:var(--text-mid);"><strong>实时口语练习（推荐）：</strong>点击聊天框右下角的 <strong>Gemini Live 波形图标</strong>，开始实时免提口语对话。</span></p></div>
+    </div>
+
+    <p class="flow-chart-title">📱 How to Use the Coach — Step-by-Step Visual Guide</p>
+    <p class="flow-chart-sub">📱 如何使用教练 — 分步图解指南</p>
+
+    <div class="flow-chart">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <img src="1.png" alt="Step 1: Open the Gem" />
+        <div class="caption">Open the Gem<br>打开教练</div>
+      </div>
+      <div class="flow-arrow">➜</div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <img src="2.png" alt="Step 2: Say Hi" />
+        <div class="caption">Send "Hi"<br>发送 "Hi"</div>
+      </div>
+      <div class="flow-arrow">➜</div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <img src="3.png" alt="Step 3: Set Preferences" />
+        <div class="caption">Set Preferences<br>设置偏好</div>
+      </div>
+      <div class="flow-arrow">➜</div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <img src="4.png" alt="Step 4: Start the Interview" />
+        <div class="caption">Start Interview<br>开始面试</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text-mid);font-size:.92rem;margin:6px 0 4px;">Refer to <a href="https://youtu.be/K8xmSTypSzQ?si=CihV7dWxlsDgRRZ3" target="_blank" rel="noopener" style="color:var(--pink-accent);font-weight:700;text-decoration:underline;">this video on YouTube</a> for more information.</p>
+  </div>
+
+  </div><!-- /tab-panel setup -->
+
+  <!-- TAB 2: INTERVIEW FLOW & QUESTION BANK -->
+  <div class="tab-panel" data-panel="interview">
+
+  <!-- Step 4 -->
+  <div class="card">
+    <h2 class="step-heading">🎓 Get Ready for Your Mock Interview</h2>
+    <p style="color:var(--pink-accent);font-size:.85rem;font-weight:600;margin:-10px 0 14px 42px;">🎓 为您的模拟面试做好准备</p>
+
+    <!-- DOWNLOAD TAB -->
+    <a class="download-tab" href="LAN4102%20Materials%20for%20Clinic%20Session_EAII.docx" download>
+      <div class="download-icon">📄</div>
+      <div class="download-info">
+        <div class="download-title">Clinic materials</div>
+        <div class="download-sub">Click to download the Word document (.docx)<br>点击下载 Word 文档（.docx）</div>
+      </div>
+      <div class="download-arrow">⬇</div>
+    </a>
+
+    <p style="color:var(--text-mid);margin-bottom:10px;font-size:.96rem;line-height:1.7;">Download <strong>"Clinic materials"</strong>. Then, draft your answers before you start practising. The coach will start with this question: <em>"Could you please introduce yourself in 2 minutes?"</em> Feedback will be given afterwards. After that, the coach will pick exactly <strong>one</strong> question from <strong>each</strong> of the 4 categories below.</p>
+    <p style="color:var(--text-mid);margin-bottom:14px;font-size:.9rem;line-height:1.7;">请先下载<strong>"Clinic materials"</strong>，然后在开始练习前列出您的回答要点。教练会以这个问题开始：<em>"请用两分钟介绍一下自己好吗？"</em>回答后会收到反馈。之后，教练会从下方 <strong>4 个类别</strong>中各选<strong>1 个</strong>问题。</p>
+
+    <!-- QUESTION BANK -->
+    <hr class="divider"/>
+    <h3 style="color:var(--pink-accent);font-size:1rem;margin:18px 0 14px;">🗂️ Questions You May Be Asked 您将面对的问题</h3>
+    <div style="overflow-x:auto;">
+      <table class="q-table">
+        <thead>
+          <tr><th style="width:36%">Category / 类别</th><th>Sample Interview Questions / 面试问题示例</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Strength and Weaknesses</strong><br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">优点与缺点</span></td>
+            <td>
+              <ul>
+                <li>Can you describe a time when your strengths helped you succeed?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您能描述一个您的优点帮助您取得成功的经历吗？</span></li>
+                <li>What is a weakness you've identified in yourself, and how are you addressing it?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您在自己身上发现了什么缺点？您是如何改进的？</span></li>
+                <li>What are the important qualities a person should have to become an effective team member?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">要成为一名高效的团队成员，一个人应该具备哪些重要品质？</span></li>
+                <li>How do you ensure your weaknesses do not impact your work performance?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您如何确保自己的缺点不会影响工作表现？</span></li>
+                <li>In what areas do you feel you need the most improvement?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您觉得自己在哪些方面最需要提升？</span></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>2. Long/ Short-term Goals</strong><br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">长期 / 短期目标</span></td>
+            <td>
+              <ul>
+                <li>What is your plan for your personal growth and development?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您的个人成长和发展计划是什么？</span></li>
+                <li>What are your long-term career goals?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您的长期职业目标是什么？</span></li>
+                <li>What are your goals for the next five years / ten years? How do you plan to achieve those goals?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您未来五年/十年的目标是什么？您计划如何实现这些目标？</span></li>
+                <li>What would you like to study in the near future?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您近期想学习什么？</span></li>
+                <li>Will you consider taking any training courses related to this field/job?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您会考虑参加与该领域/工作相关的培训课程吗？</span></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>3. Problem-solving</strong><br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">解决问题</span></td>
+            <td>
+              <ul>
+                <li>How do you deal with difficult customers / irresponsible colleagues?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您如何应对难缠的客户/不负责任的同事？</span></li>
+                <li>How do you manage multiple tasks?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您如何管理多项任务？</span></li>
+                <li>How do you handle office gossip?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您如何处理办公室八卦？</span></li>
+                <li>Describe a difficult work situation / project and how you overcame it?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">请描述一个困难的工作情况/项目，以及您是如何克服的？</span></li>
+                <li>Can you tell us about a situation in which you were required to analyse and solve a complicated problem?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您能讲述一个您需要分析并解决复杂问题的情况吗？</span></li>
+                <li>How do you deal with conflicts with peers?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您如何处理与同事之间的冲突？</span></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>4. Soft Skills</strong><br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">软技能</span></td>
+            <td>
+              <ul>
+                <li>Do you work better as a team member or alone? Why?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您作为团队成员还是单独工作效果更好？为什么？</span></li>
+                <li>Can you provide us with an example of your ability to work independently?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您能举一个您独立工作能力的例子吗？</span></li>
+                <li>How do you handle stress and pressure?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您如何应对压力？</span></li>
+                <li>Do you mind traveling frequently to Mainland China?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您是否介意经常前往中国大陆出差？</span></li>
+                <li>Are you willing to work under pressure and overtime?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您是否愿意在压力下工作并加班？</span></li>
+                <li>Do you have any full-time / part-time work experience?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您有全职/兼职工作经验吗？</span></li>
+                <li>What have you gained from your summer work / part-time work?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您从暑期工作/兼职工作中获得了什么？</span></li>
+                <li>What do you know about the type of work we expect from you?<br><span style="display:inline-block;margin-top:4px;padding:4px 8px;background:rgba(212,84,122,.08);border-left:3px solid var(--pink-accent);border-radius:4px;font-size:.95rem;color:var(--text-dark);font-weight:600;">您对我们期望您从事的工作类型了解多少？</span></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FEEDBACK YOU WILL RECEIVE -->
+    <hr class="divider"/>
+    <h3 style="color:var(--pink-accent);font-size:1rem;margin:18px 0 14px;">💬 The Feedback You Will Receive 您将获得的反馈</h3>
+    <p style="color:var(--pink-accent);font-size:.9rem;margin:-10px 0 14px 0;">💬 您将获得的反馈</p>
+    <p style="color:var(--text-mid);margin-bottom:14px;font-size:.94rem;">After each of your answers, the coach will give you concise, point-by-point spoken feedback. Here's exactly what to expect:<br>在您每次回答后，教练会提供简洁、按要点展开的口语反馈。以下是您将获得的内容：</p>
+
+    <ol class="feedback-rules">
+      <li><span class="fr-title">1. Pronunciation 发音</span></li>
+      <li><span class="fr-title">2. Pace &amp; Rhythm 语速与节奏</span></li>
+      <li><span class="fr-title">3. Grammar 语法</span></li>
+      <li><span class="fr-title">4. Fluency 流利度</span></li>
+      <li><span class="fr-title">5. Content Tip 内容建议</span></li>
+      <li><span class="fr-title">6. Sample Response 范例回答</span></li>
+    </ol>
+  </div>
+
+  </div><!-- /tab-panel interview -->
+
+</div><!-- /page-wrap -->
+
+<script>
+  (function() {
+    const btns = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+        btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const panel = document.querySelector('.tab-panel[data-panel="' + target + '"]');
+        if (panel) panel.classList.add('active');
+        window.scrollTo({ top: document.querySelector('.tabs-nav').offsetTop - 12, behavior: 'smooth' });
+      });
+    });
+  })();
+
+  /* ====== QUESTION BANK — SPEAK WITH SAMANTHA (macOS) ====== */
+  (function() {
+    const tbody = document.querySelector('.q-table tbody');
+    if (!tbody) return;
+
+    const supported = ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
+
+    function findVoice() {
+      const voices = window.speechSynthesis.getVoices() || [];
+      return voices.find(v => v.name === 'Samantha')
+          || voices.find(v => /samantha/i.test(v.name))
+          || voices.find(v => v.lang === 'en-US')
+          || voices.find(v => /^en[-_]/i.test(v.lang))
+          || null;
+    }
+
+    let cachedVoice = findVoice();
+    if (supported && !cachedVoice) {
+      window.speechSynthesis.onvoiceschanged = function() {
+        cachedVoice = findVoice();
+        if (cachedVoice) window.speechSynthesis.onvoiceschanged = null;
+      };
+    }
+
+    const items = tbody.querySelectorAll('li');
+    let currentBtn = null;
+
+    items.forEach(li => {
+      const html = li.innerHTML;
+      const brMatch = html.match(/<br\s*\/?>([\s\S]*)/i);
+      if (!brMatch) return;
+      const englishRaw = html.substring(0, brMatch.index).trim();
+      const chineseRaw = brMatch[1].trim();
+      const englishText = englishRaw.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+      li.innerHTML =
+        '<div class="q-question-line">' +
+          '<span class="q-en">' + englishRaw + '</span>' +
+          '<button class="q-listen-btn' + (supported ? '' : ' unsupported') + '" type="button" ' +
+            'data-text="' + englishText.replace(/"/g, '&quot;') + '" ' +
+            'aria-label="Listen to this question" ' +
+            'title="' + (supported ? 'Listen (Samantha voice on macOS)' : 'Speech not supported in this browser') + '">🔊</button>' +
+        '</div>' + chineseRaw;
+
+      const btn = li.querySelector('.q-listen-btn');
+      if (!supported || !btn) return;
+
+      btn.addEventListener('click', function() {
+        const text = btn.dataset.text;
+        if (!text) return;
+
+        if (currentBtn === btn) {
+          window.speechSynthesis.cancel();
+          btn.classList.remove('playing');
+          currentBtn = null;
+          return;
+        }
+
+        window.speechSynthesis.cancel();
+        if (currentBtn) currentBtn.classList.remove('playing');
+
+        const utter = new SpeechSynthesisUtterance(text);
+        if (cachedVoice) utter.voice = cachedVoice;
+        utter.lang = 'en-US';
+        utter.rate = 0.9;
+        utter.pitch = 1;
+
+        utter.onend = function() {
+          btn.classList.remove('playing');
+          if (currentBtn === btn) currentBtn = null;
+        };
+        utter.onerror = function() {
+          btn.classList.remove('playing');
+          if (currentBtn === btn) currentBtn = null;
+        };
+
+        btn.classList.add('playing');
+        currentBtn = btn;
+        window.speechSynthesis.speak(utter);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

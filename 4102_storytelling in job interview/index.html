@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Storytelling in Job Interviews</title>
+<style>
+  :root {
+    --bg: #f4f6fb;
+    --panel: #ffffff;
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --accent-soft: #e0e7ff;
+    --border: #e5e7eb;
+    --tag-bg: #dbeafe;
+    --tag-ink: #1d4ed8;
+    --script-bg: #f0f9ff;
+    --script-border: #38bdf8;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background-color: #FFF1E0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='%23F4A460' fill-opacity='0.10'><path d='M20 14a4 4 0 0 0-4 4v18a4 4 0 0 0 8 0V18a4 4 0 0 0-4-4zm-7 22v3a7 7 0 0 0 14 0v-3a5 5 0 0 1-3 1h-8a5 5 0 0 1-3-1zM18 50h4v8h2v-8h4v-2h-10v2z'/></g></svg>"),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='%23E07A3C' fill-opacity='0.12'><path d='M22 8l4 2-2 4-4-2zM14 16l34 18-4 8L10 24zM10 24l4-2 4 8-4 2zM8 32l2-4 8 4-2 4z'/></g></svg>"),
+      linear-gradient(135deg, #FFF1E0 0%, #FFE6CC 100%);
+    background-position: 0 0, 40px 40px, 0 0;
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: 80px 80px, 80px 80px, 100% 100%;
+    background-attachment: fixed, fixed, fixed;
+    line-height: 1.55;
+  }
+
+  header.page {
+    padding: 28px 24px 0;
+    text-align: center;
+    background: var(--bg);
+  }
+  header.page h1 {
+    margin: 0 0 6px;
+    font-size: 30px;
+    color: #111827;
+    letter-spacing: -.01em;
+  }
+  header.page .presenter {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 15px;
+    font-style: italic;
+  }
+  .banner {
+    width: 100%;
+    max-width: 1100px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .objectives {
+    max-width: 1100px;
+    margin: 24px auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .objectives h2 { margin-top: 0; font-size: 18px; color: var(--accent); }
+  .objectives ul { margin: 8px 0 0; padding-left: 20px; }
+  .objectives li { margin: 4px 0; }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: 1100px;
+    margin: 0 auto 16px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    background: transparent;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    border-bottom: 3px solid transparent;
+    border-radius: 6px 6px 0 0;
+    transition: all .15s ease;
+  }
+  .tab-btn:hover { background: var(--accent-soft); color: var(--accent); }
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .tab-content {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 8px 16px;
+  }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  .task-intro {
+    background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .task-intro h2 { margin: 0 0 4px; font-size: 20px; color: var(--accent); }
+  .task-intro p { margin: 0; color: #374151; }
+
+  .slide {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 16px 0;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .slide-head {
+    padding: 10px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .slide-body { padding: 18px 22px; }
+  .slide-body h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    color: #111827;
+  }
+  .slide-body p { margin: 8px 0; }
+
+  .script {
+    background: var(--script-bg);
+    border-left: 3px solid var(--script-border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-style: italic;
+    color: #0c4a6e;
+  }
+
+  .label-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-ink);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 2px 4px 2px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #f3f4f6; font-weight: 600; }
+
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+
+  .columns-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 640px) {
+    .columns-2 { grid-template-columns: 1fr; }
+    header.page h1 { font-size: 22px; }
+  }
+
+  .small { font-size: 13px; color: var(--muted); }
+  .check { color: #16a34a; font-weight: 700; }
+  a { color: var(--accent); word-break: break-all; }
+
+  /* Interactive flowchart */
+  .flowchart-task {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 16px;
+  }
+  .flowchart-task h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #111827;
+  }
+  .flowchart-task .instructions {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .flowchart-task .instructions code {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13px;
+    color: #1e293b;
+  }
+  .event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 640px) {
+    .event-list { grid-template-columns: 1fr; }
+  }
+  .event-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .event-list .num {
+    flex: 0 0 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .event-list .text { flex: 1; }
+  .seq-input-wrap {
+    margin: 4px 0 8px;
+  }
+  .seq-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  .seq-input {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", monospace;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--ink);
+    background: #fffef7;
+    border: 2px solid #cbd5e1;
+    border-left: 6px solid var(--accent);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+  }
+  .seq-input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .seq-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background: #ffffff;
+  }
+  .seq-input.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+  }
+  .seq-input.incorrect {
+    border-color: #dc2626;
+    background: #fef2f2;
+  }
+  .seq-input.partial {
+    border-color: #f59e0b;
+    background: #fffbeb;
+  }
+  .seq-hint kbd {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    color: #1e293b;
+  }
+
+  /* Story components flowchart */
+  .components-flow {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 16px;
+  }
+  .components-flow h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #111827;
+  }
+  .components-flow .instructions {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .flow-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0;
+    justify-content: center;
+  }
+  .flow-node {
+    flex: 1 1 180px;
+    min-width: 180px;
+    background: #ffffff;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .flow-node.setting    { border-color: #2563eb; background: #eff6ff; }
+  .flow-node.struggle   { border-color: #dc2626; background: #fef2f2; }
+  .flow-node.realisation{ border-color: #d97706; background: #fffbeb; }
+  .flow-node.solution   { border-color: #16a34a; background: #f0fdf4; }
+  .flow-node .step {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .flow-node .name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+  }
+  .flow-node .desc {
+    font-size: 12px;
+    color: #4b5563;
+    line-height: 1.4;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 22px;
+    padding: 0 6px;
+    min-width: 28px;
+  }
+  @media (max-width: 720px) {
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .btn {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-primary:hover { background: #1d4ed8; }
+  .btn-ghost { background: #f1f5f9; color: var(--ink); }
+  .btn-ghost:hover { background: #e2e8f0; }
+
+  .feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.success { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+  .feedback.partial { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+  .feedback.show-answer { background: #eff6ff; color: #1e40af; border: 1px solid #93c5fd; }
+  .feedback .label { font-weight: 700; }
+
+  /* Matching game */
+  .match-game {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .match-game h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #111827;
+  }
+  .match-game .instructions {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .match-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 720px) {
+    .match-categories { grid-template-columns: 1fr; }
+  }
+  .match-cat {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    background: #f8fafc;
+  }
+  .match-cat h4 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: #111827;
+  }
+  .match-cat .eg {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    background: #ffffff;
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+  }
+  .match-cat .eg strong { color: var(--accent); }
+  .match-input {
+    width: 100%;
+    padding: 9px 11px;
+    font-size: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: #ffffff;
+    font-family: inherit;
+    transition: border-color .15s, background .15s;
+    box-sizing: border-box;
+  }
+  .match-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .match-input.correct {
+    border-color: #16a34a;
+    background: #f0fdf4;
+  }
+  .match-input.incorrect {
+    border-color: #dc2626;
+    background: #fef2f2;
+  }
+  .match-input.revealed {
+    border-color: #2563eb;
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+  .match-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .match-feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+  }
+  .match-feedback.show { display: block; }
+  .match-feedback.success { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+  .match-feedback.partial { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+  .match-feedback .label { font-weight: 700; }
+
+  /* Drag-and-drop matching game */
+  .dnd-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    min-height: 64px;
+    margin-bottom: 20px;
+  }
+  .dnd-pool:empty::before {
+    content: "All expressions have been placed. Click Reset to bring them back.";
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 13px;
+  }
+  .dnd-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 720px) {
+    .dnd-categories { grid-template-columns: 1fr; }
+  }
+  .dnd-cat {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    background: #ffffff;
+  }
+  .dnd-cat h4 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    color: #111827;
+  }
+  .dnd-cat .hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .dnd-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 32px;
+    padding: 6px;
+    border: 1.5px dashed #e2e8f0;
+    border-radius: 6px;
+    background: #f8fafc;
+  }
+  .dnd-slot {
+    min-height: 36px;
+    padding: 6px 8px;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    transition: background .15s, border-color .15s;
+    font-size: 13px;
+  }
+  .dnd-slot.drag-over {
+    background: #eff6ff;
+    border-color: var(--accent);
+    border-style: solid;
+  }
+  .dnd-slot .placeholder {
+    color: #94a3b8;
+    font-style: italic;
+  }
+  .dnd-slot.correct { border-color: #16a34a; background: #f0fdf4; }
+  .dnd-slot.incorrect { border-color: #dc2626; background: #fef2f2; }
+  .dnd-slot.revealed { border-color: #2563eb; background: #eff6ff; }
+
+  .chip {
+    display: inline-block;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .chip:hover { transform: translateY(-1px); box-shadow: 0 3px 6px rgba(0,0,0,0.08); }
+  .chip:active { cursor: grabbing; }
+  .chip.dragging { opacity: 0.4; }
+  .chip.selected { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .chip.placed { width: 100%; border-left-color: #94a3b8; }
+
+  /* Mindmap game */
+  .mindmap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .mindmap h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #111827;
+  }
+  .mindmap .instructions {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .mindmap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 720px) {
+    .mindmap-grid { grid-template-columns: 1fr; }
+  }
+  .mindmap-cell {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+  .mindmap-cell .head {
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #ffffff;
+  }
+  .mindmap-cell.setting     .head { background: #2563eb; }
+  .mindmap-cell.struggle    .head { background: #dc2626; }
+  .mindmap-cell.realisation .head { background: #d97706; }
+  .mindmap-cell.solution    .head { background: #16a34a; }
+  .mindmap-cell .canvas {
+    position: relative;
+    background: #f1f5f9;
+    overflow: hidden;
+  }
+  .mindmap-cell .canvas img {
+    display: block;
+    width: 100%;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+  }
+  .note {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: #fef08a;
+    border: 1px solid #facc15;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+    max-width: 140px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: move;
+    user-select: none;
+    line-height: 1.3;
+  }
+  .note .x {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #1f2937;
+    color: white;
+    border-radius: 999px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .mindmap-cell.setting     .note { background: #dbeafe; border-color: #2563eb; }
+  .mindmap-cell.struggle    .note { background: #fee2e2; border-color: #dc2626; }
+  .mindmap-cell.realisation .note { background: #fef3c7; border-color: #d97706; }
+  .mindmap-cell.solution    .note { background: #dcfce7; border-color: #16a34a; }
+
+  .mindmap-input {
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px;
+    border-top: 1px solid var(--border);
+    background: #f8fafc;
+  }
+  .mindmap-input input {
+    flex: 1;
+    padding: 7px 10px;
+    font-size: 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-family: inherit;
+    min-width: 0;
+  }
+  .mindmap-input input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .mindmap-input button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .mindmap-input button:hover { background: #1d4ed8; }
+  .mindmap-input button:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+  }
+  .mindmap-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .mindmap-summary {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    display: none;
+  }
+  .mindmap-summary.show { display: block; }
+  .mindmap-summary h4 { margin: 0 0 6px; font-size: 13px; color: #111827; }
+  .mindmap-summary ul { margin: 0; padding-left: 18px; }
+  .mindmap-summary li { margin: 2px 0; }
+
+  /* Road map game */
+  .roadmap-game {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .roadmap-game h3 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #111827;
+  }
+  .roadmap-game .instructions {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .roadmap-board {
+    position: relative;
+    background: linear-gradient(180deg, #fefce8 0%, #fef3c7 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 12px 30px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .road-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .stops {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    z-index: 1;
+  }
+  .stop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .stop-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #111827;
+    background: rgba(255,255,255,0.85);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .step-num {
+    position: absolute;
+    top: -4px;
+    right: 4px;
+    background: #1f2937;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    z-index: 2;
+  }
+  .drop-zone {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px dashed #cbd5e1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    transition: background .15s, border-color .15s, transform .15s;
+    overflow: hidden;
+    position: relative;
+  }
+  .drop-zone .placeholder {
+    pointer-events: none;
+    line-height: 1.2;
+  }
+  .drop-zone.drag-over {
+    background: #eff6ff;
+    border-color: var(--accent);
+    border-style: solid;
+    transform: scale(1.05);
+  }
+  .drop-zone.filled {
+    border-style: solid;
+    padding: 0;
+  }
+  .drop-zone.filled .placeholder { display: none; }
+  .drop-zone.filled img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .drop-zone.correct {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  }
+  .drop-zone.incorrect {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+  }
+  .drop-zone .remove {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #1f2937;
+    color: white;
+    border-radius: 999px;
+    width: 20px;
+    height: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 3;
+    line-height: 1;
+  }
+  .drop-zone.filled:hover .remove { display: flex; }
+
+  .roadmap-pieces {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 14px;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    min-height: 110px;
+    margin-bottom: 6px;
+  }
+  .roadmap-pieces:empty::before {
+    content: "All images placed. Click Reset to bring them back.";
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 13px;
+    grid-column: 1 / -1;
+    text-align: center;
+    align-self: center;
+  }
+  @media (max-width: 720px) {
+    .stops, .roadmap-pieces { grid-template-columns: repeat(2, 1fr); }
+    .drop-zone { width: 80px; height: 80px; }
+  }
+  .piece {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 6px;
+    cursor: grab;
+    user-select: none;
+    text-align: center;
+    transition: transform .12s, box-shadow .12s;
+  }
+  .piece:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+  .piece:active { cursor: grabbing; }
+  .piece.dragging { opacity: 0.4; }
+  .piece.selected { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .piece img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+  .roadmap-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .roadmap-feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+  }
+  .roadmap-feedback.show { display: block; }
+  .roadmap-feedback.success { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+  .roadmap-feedback.partial  { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+  .roadmap-feedback .label { font-weight: 700; }
+
+  /* Task 2b — notes field with icon */
+  .task2b-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 8px 0 14px;
+  }
+  .task2b-icon {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+  }
+  .grow-field {
+    width: 100%;
+    min-height: 140px;
+    padding: 14px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: #fffef7;
+    border: 1.5px solid #e5e7eb;
+    border-left: 4px solid #facc15;
+    border-radius: 8px;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .grow-field::placeholder {
+    color: #9ca3af;
+    font-style: italic;
+  }
+  .grow-field:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Sample script download tab */
+  .sample-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .sample-tab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.35);
+  }
+  .sample-tab:active { transform: translateY(0); }
+  .sample-tab::before {
+    content: "⬇";
+    font-size: 14px;
+  }
+
+  /* Clickable answer block */
+  .answer-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 22px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px dashed #d97706;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #92400e;
+    cursor: pointer;
+    transition: transform .12s, box-shadow .15s, background .2s;
+    font-family: inherit;
+    text-align: left;
+  }
+  .answer-block:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+    background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+  }
+  .answer-block:active { transform: translateY(0); }
+  .answer-block .answer-icon { font-size: 22px; }
+  .answer-block.revealed {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    border-color: #16a34a;
+    border-style: solid;
+    color: #166534;
+    cursor: default;
+  }
+  .answer-block.revealed:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .answer-reveal {
+    margin-top: 14px;
+    padding: 16px 20px;
+    background: #f0fdf4;
+    border-left: 4px solid #16a34a;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #166534;
+    animation: answer-fade .35s ease-out;
+  }
+  .answer-reveal p { margin: 0; }
+  @keyframes answer-fade {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tab 4 — larger headers, bordered fields, checkboxes */
+  #task4 .slide-head {
+    font-size: 18px;
+    padding: 12px 18px;
+  }
+  #task4 .slide-body > p:first-of-type {
+    font-size: 16px;
+  }
+  .field-table {
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .field-table th {
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+  .field-table td {
+    border: 1.5px solid #cbd5e1;
+    padding: 10px 12px;
+    background: #ffffff;
+    font-size: 15px;
+  }
+  .field-table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  .field-input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: #fffef7;
+    border: 1.5px solid #cbd5e1;
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    box-sizing: border-box;
+    resize: vertical;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .field-input::placeholder {
+    color: #9ca3af;
+    font-style: italic;
+  }
+  .field-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+  .eval-table th {
+    text-align: center;
+  }
+  .eval-table th.criteria-col {
+    text-align: left;
+  }
+  .eval-table td {
+    text-align: center;
+  }
+  .eval-table td:first-child {
+    text-align: left;
+  }
+  .cb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .cb input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+  .comments-label {
+    margin-top: 14px;
+    font-size: 15px;
+  }
+  .btn-print {
+    font-size: 16px;
+    padding: 14px 28px;
+    margin-top: 8px;
+  }
+  .slide-final {
+    border: 2px dashed var(--accent);
+    background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  }
+
+  /* Print styles */
+  @media print {
+    header.page, .tabs, .task-intro, .sample-tab, .btn, button, #printBtn,
+    .roadmap-pieces, .dnd-pool, .match-actions, .mindmap-actions,
+    .roadmap-actions, .match-game, .mindmap, .roadmap-game,
+    .match-feedback, .mindmap-summary, .roadmap-feedback, .actions,
+    .components-flow, .flowchart-task, .tts-btn { display: none !important; }
+    .tab-pane { display: block !important; page-break-after: always; }
+    .slide { break-inside: avoid; box-shadow: none; }
+    body { background: #ffffff; }
+    .slide-head { background: #f3f4f6 !important; color: #000 !important; }
+    a { color: #000 !important; text-decoration: underline; }
+  }
+
+  /* Tab 5 — Useful expressions with audio */
+  .expr-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .expr-table th, .expr-table td {
+    border: 1.5px solid #cbd5e1;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .expr-table th {
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 15px;
+  }
+  .expr-table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  .expr-cell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .expr {
+    flex: 1;
+  }
+  .tts-btn {
+    flex: 0 0 auto;
+    background: #ffffff;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background .15s, transform .1s, box-shadow .15s;
+  }
+  .tts-btn:hover {
+    background: var(--accent-soft);
+    transform: scale(1.05);
+  }
+  .tts-btn:active { transform: scale(0.95); }
+  .tts-btn.speaking {
+    background: var(--accent);
+    color: white;
+    animation: tts-pulse 1s ease-in-out infinite;
+  }
+  @keyframes tts-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+    50%      { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+  }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <h1>Storytelling in Job Interviews</h1>
+  <p class="presenter">Presented by Rebecca Tang</p>
+  <div class="banner">
+    <img src="banner.jpg" alt="Share Your Story — We're Hiring" />
+  </div>
+</header>
+
+<section class="objectives">
+  <h2>Learning objectives</h2>
+  <p>By the end of this unit, you will be able to:</p>
+  <ul>
+    <li>identify the essential elements of a personal story</li>
+    <li>describe the 'moment of realisation' in personal stories</li>
+    <li>identify the key components of a self-introduction</li>
+    <li>apply storytelling techniques in job interviews</li>
+    <li>demonstrate effective non-verbal communication skills in job interviews</li>
+  </ul>
+</section>
+
+<nav class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="task1">Task 1 — The 3 S's</button>
+  <button class="tab-btn" data-tab="task2">Task 2 — Moment of Realisation</button>
+  <button class="tab-btn" data-tab="task3">Task 3 — Storytelling in Interviews</button>
+  <button class="tab-btn" data-tab="task4">Task 4 — Sharing Your Story</button>
+  <button class="tab-btn" data-tab="task5">Task 5 — Useful Expressions</button>
+</nav>
+
+<main class="tab-content">
+
+  <!-- ============= TASK 1 ============= -->
+  <section class="tab-pane active" id="task1">
+    <div class="task-intro">
+      <h2>Task 1 — The 3 S's in personal stories</h2>
+      <p>Watch an interview where <strong>Siobhán Haughey</strong>, the first Hong Kong swimmer to win an Olympic medal and the most medal-winning Olympian in Hong Kong, shares her personal story. Study the story components below, then complete the interactive task to see how they relate to her swimming journey.</p>
+    </div>
+
+    <div class="components-flow">
+      <h3>The components of a personal story</h3>
+      <p class="instructions">A strong personal story usually flows through four key components in this order:</p>
+      <div class="flow-row">
+        <div class="flow-node setting">
+          <div class="step">Step 1</div>
+          <div class="name">Setting</div>
+          <div class="desc">Where and when the story takes place — the context and background.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node struggle">
+          <div class="step">Step 2</div>
+          <div class="name">Struggle</div>
+          <div class="desc">The challenge or difficulty the storyteller faced.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node realisation">
+          <div class="step">Step 3</div>
+          <div class="name">Realisation</div>
+          <div class="desc">The "Aha" moment — a turning point or key insight.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node solution">
+          <div class="step">Step 4</div>
+          <div class="name">Solution</div>
+          <div class="desc">How the storyteller acted on the insight and what they achieved.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flowchart-task">
+      <h3>Task 1a · Type the sequence</h3>
+      <p class="instructions">Watch <a href="https://www.youtube.com/watch?v=N58HAAyOeLA&t=501s" target="_blank" rel="noopener">Siobhán Haughey's interview</a>, then <strong>type the event numbers</strong> below in the order you think they happened (for example: <code>2, 1, 3, 7, 4, 5, 6, 8</code>). Separate the numbers with commas or spaces. Press <strong>Tab</strong> (or click <strong>Check</strong>) to see how you did.</p>
+
+      <ol class="event-list" id="eventList"></ol>
+
+      <div class="seq-input-wrap">
+        <label for="seqInput" class="seq-label">Your sequence (1 – 8):</label>
+        <input id="seqInput" class="seq-input" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 2, 1, 3, 7, 4, 5, 6, 8" />
+        <p class="small seq-hint">Tip: press <kbd>Tab</kbd> to check, or click the button.</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="checkBtn">Check</button>
+        <button class="btn btn-ghost" id="resetBtn">Reset</button>
+        <button class="btn btn-ghost" id="showBtn">Show correct order</button>
+      </div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ============= TASK 2 ============= -->
+  <section class="tab-pane" id="task2">
+    <div class="task-intro">
+      <h2>Task 2 — Moment of realisation in personal stories</h2>
+      <p>For personal stories, there is usually a <strong>moment of realisation</strong> where the storyteller gains insights into their experiences, becomes aware of something significant, and transforms their understanding of themselves or their situation. Include that moment — in addition to the 3 S's — to emphasise the key insight or turning point.</p>
+    </div>
+
+    <article class="slide">
+      <div class="slide-head">Watch &amp; read</div>
+      <div class="slide-body" style="text-align:center;">
+        <img src="key-elements.jpg" alt="Personal stories: a journey of transformation — Setting, Struggle, Moment of Realisation, Solution" style="max-width:100%; height:auto; border-radius:8px; margin-bottom:14px;" />
+        <h3 style="text-align:left; margin:0 0 8px;">Task 2a</h3>
+        <p style="text-align:left;">Watch a narrative from <strong>Jennie</strong>, a member of the South Korean girl group BLACKPINK, and read about her journey to becoming a K-pop star.</p>
+        <p style="text-align:left;"><a href="https://www.youtube.com/watch?v=SvocLKmQJXU" target="_blank" rel="noopener">https://www.youtube.com/watch?v=SvocLKmQJXU</a></p>
+        <p class="small" style="text-align:left;">Play the video from 0:00–3:20.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Jennie's journey on the road</div>
+      <div class="slide-body">
+        <div class="roadmap-game" id="roadmapGame">
+          <h3>Place Jennie's story on the road</h3>
+          <p class="instructions">Watch the video above, then <strong>drag each image</strong> from the tray below onto the matching stop on the road. (On a phone, tap an image, then tap a stop.)</p>
+
+          <div class="roadmap-board">
+            <svg class="road-svg" viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 0 130 C 150 60, 300 200, 500 130 S 850 60, 1000 130"
+                    stroke="#94a3b8" stroke-width="40" fill="none" stroke-linecap="round" />
+              <path d="M 0 130 C 150 60, 300 200, 500 130 S 850 60, 1000 130"
+                    stroke="#ffffff" stroke-width="2" fill="none" stroke-dasharray="10 12" stroke-linecap="round" />
+            </svg>
+            <div class="stops">
+              <div class="stop" data-key="setting">
+                <div class="stop-label">Setting</div>
+                <div class="drop-zone" data-key="setting">
+                  <div class="placeholder">Drop<br/>image</div>
+                </div>
+                <div class="step-num">1</div>
+              </div>
+              <div class="stop" data-key="struggle">
+                <div class="stop-label">Struggle</div>
+                <div class="drop-zone" data-key="struggle">
+                  <div class="placeholder">Drop<br/>image</div>
+                </div>
+                <div class="step-num">2</div>
+              </div>
+              <div class="stop" data-key="realisation">
+                <div class="stop-label">Realisation</div>
+                <div class="drop-zone" data-key="realisation">
+                  <div class="placeholder">Drop<br/>image</div>
+                </div>
+                <div class="step-num">3</div>
+              </div>
+              <div class="stop" data-key="solution">
+                <div class="stop-label">Solution</div>
+                <div class="drop-zone" data-key="solution">
+                  <div class="placeholder">Drop<br/>image</div>
+                </div>
+                <div class="step-num">4</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="roadmap-pieces" id="roadmapPieces">
+            <div class="piece" draggable="true" data-key="setting">
+              <img src="jennie-1-setting.jpg" alt="Setting" />
+            </div>
+            <div class="piece" draggable="true" data-key="struggle">
+              <img src="jennie-2-struggle.jpg" alt="Struggle" />
+            </div>
+            <div class="piece" draggable="true" data-key="realisation">
+              <img src="jennie-3-realisation.jpg" alt="Realisation" />
+            </div>
+            <div class="piece" draggable="true" data-key="solution">
+              <img src="jennie-4-solution.jpg" alt="Solution" />
+            </div>
+          </div>
+
+          <div class="roadmap-actions">
+            <button class="btn btn-primary" id="roadCheckBtn">Check</button>
+            <button class="btn btn-ghost" id="roadResetBtn">Reset</button>
+            <button class="btn btn-ghost" id="roadShowBtn">Show correct order</button>
+          </div>
+          <div class="roadmap-feedback" id="roadFeedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Check your understanding</div>
+      <div class="slide-body">
+        <h3 style="margin:0 0 14px;">What's the moment of realisation?</h3>
+        <p class="small" style="margin:0 0 14px; color:var(--muted);">Tap the answer block below to reveal Jennie's moment of realisation.</p>
+        <button class="answer-block" id="answerBlock" type="button" aria-expanded="false" aria-controls="answerText">
+          <span class="answer-prompt">Tap to reveal the answer</span>
+          <span class="answer-icon" aria-hidden="true">👆</span>
+        </button>
+        <div class="answer-reveal" id="answerText" hidden>
+          <p>She realised her dream career was in the music industry, where she could combine her passion for music and performance.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions — Drag &amp; drop</div>
+      <div class="slide-body">
+        <div class="match-game" id="matchGame">
+          <h3>Useful expressions for storytelling</h3>
+          <p class="instructions">Drag each expression chip from the pool below into the correct category box. (On a phone, tap a chip then tap a slot.) Click <strong>Check</strong> when you're done.</p>
+
+          <div class="dnd-pool" id="dndPool" aria-label="Expression pool"></div>
+
+          <div class="dnd-categories" id="dndCategories"></div>
+
+          <div class="match-actions">
+            <button class="btn btn-primary" id="matchCheckBtn">Check</button>
+            <button class="btn btn-ghost" id="matchResetBtn">Reset</button>
+            <button class="btn btn-ghost" id="matchShowBtn">Show Answers</button>
+          </div>
+          <div class="match-feedback" id="matchFeedback" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Task 2b</div>
+      <div class="slide-body">
+        <p class="task2b-intro">
+          <svg class="task2b-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+            <path d="M20 22 L20 46 L26 42 L30 48 L34 42 L40 46 L44 22 Z" fill="#ffffff" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M24 30 H40 M24 35 H38 M24 40 H34" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="48" cy="18" r="6" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+            <path d="M48 14 V22 M44 18 H52" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Work in pairs and tell your classmates about how you chose this Higher Diploma programme. Use storytelling to share your experiences and feelings. Jot down some notes and use the expressions above to help you.
+        </p>
+        <textarea class="grow-field" placeholder="Start jotting down your notes here… The box will grow as you type."></textarea>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============= TASK 3 ============= -->
+  <section class="tab-pane" id="task3">
+    <div class="task-intro">
+      <h2>Task 3 — Storytelling in job interviews</h2>
+      <p>Sharing personal stories in a job interview is an effective way to make your responses more memorable and help you stand out from other candidates. You may apply storytelling techniques to introduce yourself or answer interview questions about your interest in the position, company, or industry.</p>
+      <p style="margin-top:10px;"><strong>▶ Watch <a href="https://canva.link/edziwbjh9ic3f2h" target="_blank" rel="noopener">Ava's self-introduction</a> for more details.</strong></p>
+      <p style="margin-top:12px;"><a class="sample-tab" href="sample-script.docx" download>Sample script</a></p>
+    </div>
+  </section>
+
+  <!-- ============= TASK 4 ============= -->
+  <section class="tab-pane" id="task4">
+    <div class="task-intro">
+      <h2>Task 4 — Sharing your personal stories</h2>
+      <p>Now it's your turn to introduce yourself and explain why you are interested in a particular job. In <strong>EAII</strong>, you will attend a 4-minute interview for the job you previously applied for in the Job Application Portfolio. You will give a 2-minute self-introduction and demonstrate your storytelling skills when explaining your reasons.</p>
+    </div>
+
+    <article class="slide">
+      <div class="slide-head">Task 4a — Storyboard</div>
+      <div class="slide-body">
+        <p>Use the storyboard below to prepare and brainstorm ideas for your self-introduction. Click any field to start typing.</p>
+        <table class="field-table">
+          <tr><th style="width:30%;">Item</th><th>Your answer</th></tr>
+          <tr>
+            <td><strong>My story:</strong></td>
+            <td><textarea class="field-input" rows="3" placeholder="Jot down your personal story here…"></textarea></td>
+          </tr>
+          <tr>
+            <td><strong>The job you are applying for:</strong></td>
+            <td><textarea class="field-input" rows="2" placeholder="Which job?"></textarea></td>
+          </tr>
+          <tr>
+            <td><strong>Intended target audience:</strong></td>
+            <td><textarea class="field-input" rows="2" placeholder="Who will be listening?"></textarea></td>
+          </tr>
+        </table>
+        <p class="small">Tip: You should always have a job in mind and consider the target audience to make storytelling in your self-introduction more effective.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Draft your self-introduction</div>
+      <div class="slide-body">
+        <p>You may write down your self-introduction if you wish:</p>
+        <textarea class="field-input grow-field" rows="6" placeholder="Start drafting your self-introduction here…"></textarea>
+        <p class="small">Refer to the 'Useful expressions' on the following slides to help with the writing process.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Task 4b</div>
+      <div class="slide-body">
+        <p>Practise your self-introduction with a classmate. Take turns delivering your self-introductions and use the checklist on the next slide to evaluate your partner's performance and put down any suggestions for improvement.</p>
+        <p class="small">Remember to demonstrate the non-verbal communication skills mentioned in the video above.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Peer evaluation — Content</div>
+      <div class="slide-body">
+        <p>Tick every box that applies for each criterion.</p>
+        <table class="field-table eval-table">
+          <thead>
+            <tr><th class="criteria-col">Criteria</th><th>👍🏻</th><th>Yes</th><th>Needs improvement</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Greeted / thanked the interviewer(s) appropriately</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+            <tr>
+              <td>Clearly introduced his/her name and educational background</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+            <tr>
+              <td>Applied storytelling skills to explain reasons for being interested in the job</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Peer evaluation — Non-verbal communication</div>
+      <div class="slide-body">
+        <p>Tick every box that applies for each criterion.</p>
+        <table class="field-table eval-table">
+          <thead>
+            <tr><th class="criteria-col">Criteria</th><th>👍🏻</th><th>Yes</th><th>Needs improvement</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maintained appropriate eye contact</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+            <tr>
+              <td>Kept a smile during the self-introduction</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+            <tr>
+              <td>Used appropriate body language</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+            <tr>
+              <td>Spoke clearly and at a good pace</td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+              <td><label class="cb"><input type="checkbox" /></label></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="comments-label"><strong>Additional comments:</strong></p>
+        <textarea class="field-input grow-field" rows="3" placeholder="Add any suggestions for improvement here…"></textarea>
+      </div>
+    </article>
+
+    <article class="slide slide-final">
+      <div class="slide-head">Done? Save or print your work</div>
+      <div class="slide-body" style="text-align:center;">
+        <p>Once you have filled in the storyboard, drafted your self-introduction, and completed the peer-evaluation checklists above, click the button below to print or save this as a PDF.</p>
+        <button class="btn btn-primary btn-print" id="printBtn">🖨 Print / Save as PDF</button>
+        <p class="small" style="margin-top:14px;">Tip: in the print dialog, choose <strong>Save as PDF</strong> as the destination to keep a digital copy of your work.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============= TASK 5 ============= -->
+  <section class="tab-pane" id="task5">
+    <div class="task-intro">
+      <h2>Task 5 — Useful expressions (with audio)</h2>
+      <p>Practise saying each expression out loud. Click the <strong>🔊</strong> icon next to any expression to hear it read at a slower pace (0.7× speed) in a higher pitch using the macOS <strong>Samantha</strong> voice. Works on any device with a Samantha-quality voice installed (Safari on macOS gives the closest match).</p>
+    </div>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions for self-introductions</div>
+      <div class="slide-body">
+        <table class="expr-table">
+          <thead>
+            <tr><th style="width:35%;">Purpose</th><th>Useful expression</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="2"><strong>Greeting / Introducing yourself</strong></td><td class="expr-cell"><span class="expr">Good morning / afternoon / evening. My name is …</span><button class="tts-btn" data-text="Good morning. My name is ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">Hello, everyone. I'm …</span><button class="tts-btn" data-text="Hello, everyone. I'm ..." title="Listen">🔊</button></td></tr>
+            <tr><td rowspan="5"><strong>Expressing thanks / Showing enthusiasm</strong></td><td class="expr-cell"><span class="expr">Thank you for having me here today.</span><button class="tts-btn" data-text="Thank you for having me here today." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">Thank you for inviting me to the interview.</span><button class="tts-btn" data-text="Thank you for inviting me to the interview." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">It's very nice to meet you all. / I'm pleased to meet you all.</span><button class="tts-btn" data-text="It's very nice to meet you all. I'm pleased to meet you all." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I'm excited to be here to discuss my passion for [role/industry].</span><button class="tts-btn" data-text="I'm excited to be here to discuss my passion for the role." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I'm glad to be here today to share a bit about myself.</span><button class="tts-btn" data-text="I'm glad to be here today to share a bit about myself." title="Listen">🔊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions — Educational background</div>
+      <div class="slide-body">
+        <table class="expr-table">
+          <thead>
+            <tr><th style="width:35%;">Purpose</th><th>Useful expression</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Introducing your educational background</strong></td><td class="expr-cell"><span class="expr">I'm a final-year student at HKDI studying for a [programme].</span><button class="tts-btn" data-text="I'm a final-year student at HKDI studying for a programme." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I'm currently studying [programme] at HKDI and will graduate [time].</span><button class="tts-btn" data-text="I'm currently studying a programme at HKDI and will graduate soon." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I recently graduated from HKDI with [programme].</span><button class="tts-btn" data-text="I recently graduated from HKDI with a programme." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I completed my [programme] at HKDI.</span><button class="tts-btn" data-text="I completed my programme at HKDI." title="Listen">🔊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions for storytelling — Setting the story context</div>
+      <div class="slide-body">
+        <table class="expr-table">
+          <thead>
+            <tr><th style="width:35%;">Purpose</th><th>Useful expression</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Setting the story context</strong></td><td class="expr-cell"><span class="expr">Since / When I was …, …</span><button class="tts-btn" data-text="Since I was young, ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">At the age of …, …</span><button class="tts-btn" data-text="At the age of ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">During my time in …, …</span><button class="tts-btn" data-text="During my time in ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">Throughout my childhood, …</span><button class="tts-btn" data-text="Throughout my childhood, ..." title="Listen">🔊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions for storytelling — Describing the struggle</div>
+      <div class="slide-body">
+        <table class="expr-table">
+          <thead>
+            <tr><th style="width:35%;">Purpose</th><th>Useful expression</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="6"><strong>Describing the struggle</strong></td><td class="expr-cell"><span class="expr">I struggled with …</span><button class="tts-btn" data-text="I struggled with ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I was unsure about …</span><button class="tts-btn" data-text="I was unsure about ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I was confused about …</span><button class="tts-btn" data-text="I was confused about ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I faced a dilemma regarding …</span><button class="tts-btn" data-text="I faced a dilemma regarding ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I found it challenging to …</span><button class="tts-btn" data-text="I found it challenging to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">It was difficult / hard / challenging for me to …</span><button class="tts-btn" data-text="It was difficult for me to ..." title="Listen">🔊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions for storytelling — Moment of realisation</div>
+      <div class="slide-body">
+        <table class="expr-table">
+          <thead>
+            <tr><th style="width:35%;">Purpose</th><th>Useful expression</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="4"><strong>Highlighting the moment of realisation</strong></td><td class="expr-cell"><span class="expr">I realised / discovered / noticed that I wanted to …</span><button class="tts-btn" data-text="I realised that I wanted to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I suddenly recognised …</span><button class="tts-btn" data-text="I suddenly recognised ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I came to understand …</span><button class="tts-btn" data-text="I came to understand ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I became aware of …</span><button class="tts-btn" data-text="I became aware of ..." title="Listen">🔊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-head">Useful expressions for storytelling — Aspiration / solution</div>
+      <div class="slide-body">
+        <table class="expr-table">
+          <thead>
+            <tr><th style="width:35%;">Purpose</th><th>Useful expression</th></tr>
+          </thead>
+          <tbody>
+            <tr><td rowspan="7"><strong>Expressing a current aspiration or goal as a solution</strong></td><td class="expr-cell"><span class="expr">This experience has inspired me to pursue a career in …</span><button class="tts-btn" data-text="This experience has inspired me to pursue a career in ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">This realisation motivated me to …</span><button class="tts-btn" data-text="This realisation motivated me to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">This insight encouraged me to …</span><button class="tts-btn" data-text="This insight encouraged me to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">So, I decided to …</span><button class="tts-btn" data-text="So, I decided to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">As a result, I committed to …</span><button class="tts-btn" data-text="As a result, I committed to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">I'm eager to contribute to …</span><button class="tts-btn" data-text="I'm eager to contribute to ..." title="Listen">🔊</button></td></tr>
+            <tr><td class="expr-cell"><span class="expr">Based on …, …</span><button class="tts-btn" data-text="Based on ..." title="Listen">🔊</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      panes.forEach(p => p.classList.toggle('active', p.id === target));
+      window.scrollTo({ top: document.querySelector('.tabs').offsetTop - 8, behavior: 'smooth' });
+    });
+  });
+
+  /* ---------- Tab 1: Type-the-Sequence Task ---------- */
+  const cardsData = [
+    { id: 1, text: "Her parents thought swimming was a very important life skill, particularly living in Hong Kong." },
+    { id: 2, text: "Siobhán started learning to swim at four years old with her sister." },
+    { id: 3, text: "She didn't like swimming in the beginning and thought it was boring." },
+    { id: 4, text: "She kept training, but had not yet found a real sense of purpose in the sport." },
+    { id: 5, text: "She went to university in the U.S., where the swim culture made swimming more fun and meaningful." },
+    { id: 6, text: "She started meeting more friends and teammates through swimming, which changed how she felt about the sport." },
+    { id: 7, text: "She focused on the details of how to get better and committed herself to improving." },
+    { id: 8, text: "Her dedication and passion paid off — she won multiple medals at the Olympics." }
+  ];
+
+  const TOTAL = cardsData.length;
+  const eventList = document.getElementById('eventList');
+  const seqInput = document.getElementById('seqInput');
+  const feedback = document.getElementById('feedback');
+
+  function renderEventList() {
+    eventList.innerHTML = '';
+    cardsData.forEach(c => {
+      const li = document.createElement('li');
+      const num = document.createElement('span');
+      num.className = 'num';
+      num.textContent = String(c.id);
+      const txt = document.createElement('span');
+      txt.className = 'text';
+      txt.textContent = c.text;
+      li.appendChild(num);
+      li.appendChild(txt);
+      eventList.appendChild(li);
+    });
+  }
+
+  function parseSequence(raw) {
+    if (!raw) return { ok: false, reason: 'empty', tokens: [] };
+    const tokens = raw.split(/[,\s]+/).map(t => t.trim()).filter(Boolean);
+    if (tokens.length === 0) return { ok: false, reason: 'empty', tokens: [] };
+    const nums = [];
+    for (const t of tokens) {
+      if (!/^\d+$/.test(t)) return { ok: false, reason: 'non-numeric token: "' + t + '"', tokens: [] };
+      const n = parseInt(t, 10);
+      if (n < 1 || n > TOTAL) return { ok: false, reason: 'number out of range (1–' + TOTAL + '): ' + n, tokens: [] };
+      nums.push(n);
+    }
+    if (nums.length !== TOTAL) return { ok: false, reason: 'expected ' + TOTAL + ' numbers, got ' + nums.length, tokens: nums };
+    if (new Set(nums).size !== TOTAL) return { ok: false, reason: 'duplicate number used', tokens: nums };
+    return { ok: true, tokens: nums };
+  }
+
+  function check() {
+    seqInput.classList.remove('correct', 'incorrect', 'partial');
+    const parsed = parseSequence(seqInput.value);
+    if (!parsed.ok) {
+      feedback.className = 'feedback show partial';
+      feedback.innerHTML = `<span class="label">Hmm —</span> ${parsed.reason}. Please type all ${TOTAL} numbers from 1 to ${TOTAL}, separated by commas or spaces.`;
+      seqInput.classList.add('partial');
+      return;
+    }
+    let correct = 0;
+    const expected = cardsData.map(c => c.id);
+    parsed.tokens.forEach((n, i) => { if (n === expected[i]) correct++; });
+    if (correct === TOTAL) {
+      feedback.className = 'feedback show success';
+      feedback.innerHTML = `<span class="label">Excellent!</span> All ${TOTAL} events are in the right order — the 3 S's (Setting, Struggle, Solution) plus the moment of realisation are correctly sequenced.`;
+      seqInput.classList.add('correct');
+    } else if (correct >= TOTAL - 2) {
+      feedback.className = 'feedback show partial';
+      feedback.innerHTML = `<span class="label">Almost —</span> ${correct} of ${TOTAL} correct. Have another look at the remaining events and try again.`;
+      seqInput.classList.add('partial');
+    } else {
+      feedback.className = 'feedback show partial';
+      feedback.innerHTML = `<span class="label">${correct} of ${TOTAL} correct.</span> Re-watch the clip and re-order the events, then press Tab to check again.`;
+      seqInput.classList.add('incorrect');
+    }
+  }
+
+  function reset() {
+    seqInput.value = '';
+    seqInput.classList.remove('correct', 'incorrect', 'partial');
+    feedback.className = 'feedback';
+    feedback.innerHTML = '';
+    seqInput.focus();
+  }
+
+  function showAnswer() {
+    const ans = cardsData.map(c => c.id).join(', ');
+    seqInput.value = ans;
+    seqInput.classList.remove('correct', 'incorrect', 'partial');
+    feedback.className = 'feedback show show-answer';
+    feedback.innerHTML = `<span class="label">Correct order:</span> ${ans}. Click <strong>Reset</strong> to try again.`;
+  }
+
+  // Check on Tab (when leaving the field) and on Enter
+  seqInput.addEventListener('keydown', e => {
+    if (e.key === 'Tab' || e.key === 'Enter') {
+      e.preventDefault();
+      check();
+    }
+  });
+  // Also re-validate live (without showing error toast) once input is empty again
+  seqInput.addEventListener('input', () => {
+    if (seqInput.value.trim() === '') {
+      seqInput.classList.remove('correct', 'incorrect', 'partial');
+      feedback.className = 'feedback';
+      feedback.innerHTML = '';
+    }
+  });
+
+  document.getElementById('checkBtn').addEventListener('click', check);
+  document.getElementById('resetBtn').addEventListener('click', reset);
+  document.getElementById('showBtn').addEventListener('click', showAnswer);
+
+  renderEventList();
+
+  /* ---------- Tab 2: Drag-and-Drop Matching Game ---------- */
+  const matchCategories = [
+    {
+      key: 'setting',
+      title: 'Setting the story context',
+      hint: 'Where / when the story begins.',
+      expressions: [
+        'From age … to …',
+        'When I was … / At the age of …',
+        'During …, …',
+        'Throughout …, …'
+      ]
+    },
+    {
+      key: 'struggle',
+      title: 'Describing a struggle',
+      hint: 'The challenge or difficulty faced.',
+      expressions: [
+        'I struggled with …',
+        'I was unsure about …',
+        'I found it difficult to …',
+        'I was confused about …'
+      ]
+    },
+    {
+      key: 'realisation',
+      title: 'Moment of realisation',
+      hint: 'The "Aha" turning point.',
+      expressions: [
+        'I realised that I wanted to …, so I …',
+        'I discovered / noticed / recognised that I …',
+        'I came to understand …'
+      ]
+    },
+    {
+      key: 'solution',
+      title: 'Aspiration or goal (solution)',
+      hint: 'What the storyteller does next.',
+      expressions: [
+        'Now, I want to continue to …',
+        'This experience has inspired me to …',
+        'So, I decided to …'
+      ]
+    }
+  ];
+
+  const dndPool = document.getElementById('dndPool');
+  const dndCategories = document.getElementById('dndCategories');
+  const matchFb = document.getElementById('matchFeedback');
+  let selectedChip = null;
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function makeChip(expr) {
+    const el = document.createElement('div');
+    el.className = 'chip';
+    el.draggable = true;
+    el.dataset.expr = expr;
+    el.textContent = expr;
+    el.addEventListener('dragstart', e => {
+      el.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', expr);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragend', () => el.classList.remove('dragging'));
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedChip = el;
+    });
+    return el;
+  }
+
+  function makeSlot() {
+    const el = document.createElement('div');
+    el.className = 'dnd-slot';
+    el.innerHTML = '<span class="placeholder">Drop a chip here</span>';
+    el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('drag-over'); });
+    el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+    el.addEventListener('drop', e => {
+      e.preventDefault();
+      el.classList.remove('drag-over');
+      const expr = e.dataTransfer.getData('text/plain');
+      const chip = document.querySelector(`.chip[data-expr="${CSS.escape(expr)}"]`);
+      if (chip) placeChip(chip, el);
+    });
+    el.addEventListener('click', () => {
+      if (selectedChip) placeChip(selectedChip, el);
+    });
+    return el;
+  }
+
+  function placeChip(chip, slot) {
+    const oldParent = chip.parentElement;
+    if (oldParent && (oldParent.classList.contains('dnd-slot') || oldParent.classList.contains('dnd-slots'))) {
+      const oldSlot = oldParent.classList.contains('dnd-slot') ? oldParent : null;
+      if (oldSlot && oldSlot !== slot) {
+        const existing = oldSlot.querySelector('.chip');
+        if (existing) {
+          dndPool.appendChild(existing);
+          existing.classList.remove('placed');
+        }
+      }
+    }
+    const existing = slot.querySelector('.chip');
+    if (existing && existing !== chip) {
+      if (oldParent && (oldParent.classList.contains('dnd-slot') || oldParent.classList.contains('dnd-slots'))) {
+        oldParent.appendChild(existing);
+        existing.classList.add('placed');
+      } else {
+        dndPool.appendChild(existing);
+        existing.classList.remove('placed');
+      }
+    }
+    slot.appendChild(chip);
+    chip.classList.add('placed');
+    slot.classList.add('filled');
+    if (!slot.querySelector('.placeholder') && slot.firstChild.nodeType === 1 && slot.firstChild.classList.contains('chip')) {
+      const ph = slot.querySelector('.placeholder');
+      if (ph) ph.remove();
+    }
+    selectedChip = null;
+    document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+    clearMarks();
+  }
+
+  function clearMarks() {
+    document.querySelectorAll('.dnd-slot.correct, .dnd-slot.incorrect, .dnd-slot.revealed')
+      .forEach(s => s.classList.remove('correct', 'incorrect', 'revealed'));
+  }
+
+  function renderMatch() {
+    dndPool.innerHTML = '';
+    dndCategories.innerHTML = '';
+    matchCategories.forEach(cat => {
+      const catEl = document.createElement('div');
+      catEl.className = 'dnd-cat';
+      catEl.dataset.cat = cat.key;
+      catEl.innerHTML = `<h4>${cat.title}</h4><div class="hint">${cat.hint}</div><div class="dnd-slots"></div>`;
+      const slotsWrap = catEl.querySelector('.dnd-slots');
+      for (let i = 0; i < cat.expressions.length; i++) slotsWrap.appendChild(makeSlot());
+      dndCategories.appendChild(catEl);
+    });
+    const allExprs = [];
+    matchCategories.forEach(cat => cat.expressions.forEach(e => allExprs.push(e)));
+    shuffle(allExprs).forEach(e => dndPool.appendChild(makeChip(e)));
+    matchFb.className = 'match-feedback';
+    matchFb.innerHTML = '';
+  }
+
+  function checkMatch() {
+    const slots = dndCategories.querySelectorAll('.dnd-slot');
+    let total = 0, correct = 0, filled = 0;
+    slots.forEach(slot => {
+      const chip = slot.querySelector('.chip');
+      slot.classList.remove('correct', 'incorrect', 'revealed');
+      total++;
+      if (!chip) return;
+      filled++;
+      const cat = slot.closest('.dnd-cat').dataset.cat;
+      const accepted = (matchCategories.find(c => c.key === cat) || {}).expressions || [];
+      if (accepted.includes(chip.dataset.expr)) {
+        slot.classList.add('correct');
+        correct++;
+      } else {
+        slot.classList.add('incorrect');
+      }
+    });
+    matchFb.className = 'match-feedback show';
+    if (filled < total) {
+      matchFb.classList.add('partial');
+      matchFb.innerHTML = `<span class="label">Almost there!</span> Please place all ${total} chips before checking.`;
+    } else if (correct === total) {
+      matchFb.classList.add('success');
+      matchFb.innerHTML = `<span class="label">Excellent!</span> All ${total} expressions are in the correct category.`;
+    } else {
+      matchFb.classList.add('partial');
+      matchFb.innerHTML = `<span class="label">${correct} / ${total} correct.</span> Green slots are right; red ones are in the wrong category. Try swapping them.`;
+    }
+  }
+
+  function resetMatch() { renderMatch(); }
+
+  function showMatch() {
+    matchCategories.forEach(cat => {
+      const catEl = dndCategories.querySelector(`.dnd-cat[data-cat="${cat.key}"]`);
+      const slots = catEl.querySelectorAll('.dnd-slot');
+      cat.expressions.forEach((expr, i) => {
+        const chip = dndPool.querySelector(`.chip[data-expr="${CSS.escape(expr)}"]`)
+                  || dndCategories.querySelector(`.chip[data-expr="${CSS.escape(expr)}"]`);
+        const slot = slots[i];
+        if (chip && slot) {
+          slot.appendChild(chip);
+          chip.classList.add('placed');
+          slot.classList.add('filled', 'correct');
+        }
+      });
+    });
+    matchFb.className = 'match-feedback show success';
+    matchFb.innerHTML = `<span class="label">Answers shown.</span> Click <strong>Reset</strong> to try again.`;
+  }
+
+  document.getElementById('matchCheckBtn').addEventListener('click', checkMatch);
+  document.getElementById('matchResetBtn').addEventListener('click', resetMatch);
+  document.getElementById('matchShowBtn').addEventListener('click', showMatch);
+
+  renderMatch();
+
+  /* ---------- Tab 2: Road Map Game ---------- */
+  const roadKeys = ['setting', 'struggle', 'realisation', 'solution'];
+  const roadFb = document.getElementById('roadFeedback');
+  const roadPieces = document.getElementById('roadmapPieces');
+  let selectedPiece = null;
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function makePiece(key) {
+    const el = document.createElement('div');
+    el.className = 'piece';
+    el.draggable = true;
+    el.dataset.key = key;
+    el.innerHTML = `<img src="jennie-${roadKeys.indexOf(key) + 1}-${key}.jpg" alt="${key}" />`;
+    el.addEventListener('dragstart', e => {
+      el.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', key);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    el.addEventListener('dragend', () => el.classList.remove('dragging'));
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.piece.selected').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedPiece = el;
+    });
+    return el;
+  }
+
+  function placePiece(piece, zone) {
+    const existingImg = zone.querySelector('img');
+    const oldZone = piece.parentElement;
+    if (oldZone && oldZone.classList.contains('drop-zone') && oldZone !== zone) {
+      oldZone.classList.remove('filled');
+      const oldImg = oldZone.querySelector('img');
+      if (oldImg) oldImg.remove();
+      const oldPlaceholder = document.createElement('div');
+      oldPlaceholder.className = 'placeholder';
+      oldPlaceholder.innerHTML = 'Drop<br/>image';
+      oldZone.appendChild(oldPlaceholder);
+    }
+    if (existingImg) {
+      const returnToPool = document.createElement('div');
+      returnToPool.className = 'piece';
+      returnToPool.dataset.key = existingImg.dataset.key || 'unknown';
+      returnToPool.innerHTML = existingImg.outerHTML;
+      // Simpler: just put the swapped piece back into the tray
+      const swappedKey = existingImg.alt;
+      const swappedPiece = makePiece(swappedKey);
+      swappedPiece.querySelector('img').dataset.key = swappedKey;
+      roadPieces.appendChild(swappedPiece);
+    }
+    if (zone.querySelector('.placeholder')) zone.querySelector('.placeholder').remove();
+    const ph = document.createElement('div');
+    ph.className = 'placeholder';
+    ph.style.display = 'none';
+    const img = piece.querySelector('img');
+    img.dataset.key = piece.dataset.key;
+    img.alt = piece.dataset.key;
+    zone.appendChild(img);
+    const removeBtn = document.createElement('div');
+    removeBtn.className = 'remove';
+    removeBtn.textContent = '×';
+    removeBtn.title = 'Remove';
+    removeBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const back = makePiece(piece.dataset.key);
+      roadPieces.appendChild(back);
+      img.remove();
+      removeBtn.remove();
+      const newPh = document.createElement('div');
+      newPh.className = 'placeholder';
+      newPh.innerHTML = 'Drop<br/>image';
+      zone.appendChild(newPh);
+      zone.classList.remove('filled', 'correct', 'incorrect');
+    });
+    zone.appendChild(removeBtn);
+    zone.classList.add('filled');
+    zone.classList.remove('correct', 'incorrect');
+    piece.remove();
+    selectedPiece = null;
+    document.querySelectorAll('.piece.selected').forEach(p => p.classList.remove('selected'));
+  }
+
+  function attachZone(zone) {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      const key = e.dataTransfer.getData('text/plain');
+      const piece = document.querySelector(`.piece[data-key="${key}"]`);
+      if (piece) placePiece(piece, zone);
+    });
+    zone.addEventListener('click', () => {
+      if (selectedPiece) placePiece(selectedPiece, zone);
+    });
+  }
+
+  function renderRoad() {
+    roadPieces.innerHTML = '';
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+      zone.classList.remove('filled', 'correct', 'incorrect');
+      zone.innerHTML = '<div class="placeholder">Drop<br/>image</div>';
+      attachZone(zone);
+    });
+    shuffle(roadKeys).forEach(k => roadPieces.appendChild(makePiece(k)));
+    roadFb.className = 'roadmap-feedback';
+    roadFb.innerHTML = '';
+  }
+
+  function checkRoad() {
+    const zones = document.querySelectorAll('.drop-zone');
+    let total = 0, correct = 0, filled = 0;
+    zones.forEach(zone => {
+      const img = zone.querySelector('img');
+      total++;
+      if (!img) { zone.classList.remove('correct','incorrect'); return; }
+      filled++;
+      if (img.alt === zone.dataset.key) {
+        zone.classList.add('correct');
+        zone.classList.remove('incorrect');
+        correct++;
+      } else {
+        zone.classList.add('incorrect');
+        zone.classList.remove('correct');
+      }
+    });
+    roadFb.className = 'roadmap-feedback show';
+    if (filled < total) {
+      roadFb.classList.add('partial');
+      roadFb.innerHTML = `<span class="label">Almost there!</span> Place all ${total} images on the road before checking.`;
+    } else if (correct === total) {
+      roadFb.classList.add('success');
+      roadFb.innerHTML = `<span class="label">Excellent!</span> All ${total} images are in the correct position. The 3 S's and the moment of realisation are all in order.`;
+    } else {
+      roadFb.classList.add('partial');
+      roadFb.innerHTML = `<span class="label">${correct} / ${total} correct.</span> Red circles are in the wrong stop — try swapping them and check again.`;
+    }
+  }
+
+  function showRoad() {
+    roadKeys.forEach((key, i) => {
+      const zone = document.querySelectorAll('.drop-zone')[i];
+      const piece = document.querySelector(`.piece[data-key="${key}"]`);
+      if (piece && zone) {
+        placePiece(piece, zone);
+        zone.classList.add('correct');
+      }
+    });
+    roadFb.className = 'roadmap-feedback show success';
+    roadFb.innerHTML = `<span class="label">Correct order shown.</span> Click <strong>Reset</strong> to try again.`;
+  }
+
+  document.getElementById('roadCheckBtn').addEventListener('click', checkRoad);
+  document.getElementById('roadResetBtn').addEventListener('click', renderRoad);
+  document.getElementById('roadShowBtn').addEventListener('click', showRoad);
+
+  renderRoad();
+
+  /* ---------- Auto-grow textareas ---------- */
+  document.querySelectorAll('.grow-field').forEach(el => {
+    const resize = () => {
+      el.style.height = 'auto';
+      el.style.height = el.scrollHeight + 'px';
+    };
+    el.addEventListener('input', resize);
+    resize();
+  });
+
+  /* ---------- Print / Save as PDF ---------- */
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  /* ---------- Text-to-Speech (macOS Samantha, rate 0.7, higher pitch) ---------- */
+  let samanthaVoice = null;
+  function loadSamantha() {
+    if (!('speechSynthesis' in window)) return;
+    const voices = speechSynthesis.getVoices();
+    if (!voices.length) return;
+    // Prefer Samantha on macOS; fall back to any English female voice
+    samanthaVoice =
+      voices.find(v => /samantha/i.test(v.name)) ||
+      voices.find(v => /samantha/i.test(v.voiceURI)) ||
+      voices.find(v => /female/i.test(v.name) && /en[-_]/i.test(v.lang)) ||
+      voices.find(v => /en[-_]GB/i.test(v.lang)) ||
+      voices.find(v => /en[-_]US/i.test(v.lang)) ||
+      voices[0];
+  }
+  if ('speechSynthesis' in window) {
+    loadSamantha();
+    speechSynthesis.onvoiceschanged = loadSamantha;
+  }
+
+  function speak(text, btn) {
+    if (!('speechSynthesis' in window)) {
+      alert('Your browser does not support speech synthesis.');
+      return;
+    }
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    if (samanthaVoice) u.voice = samanthaVoice;
+    u.lang = 'en-US';
+    u.rate = 0.7;     // 0.7x speed (slower for learners)
+    u.pitch = 1.4;    // higher pitch after the speed adjustment
+    u.volume = 1.0;
+    if (btn) {
+      btn.classList.add('speaking');
+      u.onend = u.onerror = () => btn.classList.remove('speaking');
+    }
+    speechSynthesis.speak(u);
+  }
+
+  document.querySelectorAll('.tts-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.dataset.text || btn.previousElementSibling.textContent.trim();
+      speak(text, btn);
+    });
+  });
+
+  /* ---------- Clickable answer reveal ---------- */
+  const answerBlock = document.getElementById('answerBlock');
+  const answerText  = document.getElementById('answerText');
+  if (answerBlock && answerText) {
+    answerBlock.addEventListener('click', () => {
+      const revealed = !answerText.hidden;
+      if (revealed) return;
+      answerBlock.classList.add('revealed');
+      answerBlock.querySelector('.answer-prompt').textContent = 'Answer';
+      answerBlock.querySelector('.answer-icon').textContent = '✓';
+      answerBlock.setAttribute('aria-expanded', 'true');
+      answerText.hidden = false;
+    });
+  }
+</script>
+
+</body>
+</html>
